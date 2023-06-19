@@ -10,9 +10,13 @@ import { NavBar } from "./Components/NavBar/NavBar";
 import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { BookmarksPage } from "./pages/BookmarksPage/BookmarksPage";
 import { ExplorePage } from "./pages/ExplorePage/ExplorePage";
+import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
+import { EditPostPage } from "./Components/EditPostPage/EditPostPage";
+import { IndividualPostPage } from "./pages/IndividualPostPage/IndividualPostPage";
 
 function App() {
 	const { state, dispatch } = useContext(PageContext);
+
 	return (
 		<div className="App">
 			<nav>
@@ -25,6 +29,12 @@ function App() {
 				<Route path="/posts" element={<PostsListingPage />} />
 				<Route path="/bookmarks" element={<BookmarksPage />} />
 				<Route path="/explore" element={<ExplorePage />} />
+				<Route path="/profile" element={<ProfilePage />} />
+				<Route
+					path="/postEdit"
+					element={<EditPostPage post={state.selectPostEdit} />}
+				/>
+				<Route path="/post/:postId" element={<IndividualPostPage />} />
 			</Routes>
 		</div>
 	);

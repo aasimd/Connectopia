@@ -1,23 +1,24 @@
 /** @format */
 
 import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./PostsCard.css";
 import {
 	fetchBookmarkPost,
+	fetchDeletePost,
 	fetchDisLikePost,
 	fetchFollowUser,
-	fetchGetBookmarks,
 	fetchLikePost,
 	fetchRemoveBookmarkPost,
+	fetchSelectedPost,
 	fetchUnfollowUser
 } from "../../FetchFunctions/fetchFunctions";
 import { PageContext } from "../../Contexts/PageContext";
 
 export const PostsCard = ({ post }) => {
 	const { state, dispatch } = useContext(PageContext);
-	const [followState, setFollowState] = useState();
 	const findBookmarkedPost = state.bookmarkedPosts.includes(post._id);
-
+	const navigate = useNavigate();
 	const isNotLiked = (id) => {
 		const findPost = state.postsData.find(
 			(currentpost) => currentpost?._id === id
@@ -49,9 +50,17 @@ export const PostsCard = ({ post }) => {
 		);
 		fetchUnfollowUser(getUser._id, dispatch);
 	};
-
+	const editHandler = (id) => {
+		const findPostToEdit = state.postsData.find((post) => post._id === id);
+		dispatch({ type: "setSelectPostEdit", payload: findPostToEdit });
+		navigate(`/postEdit`);
+	};
+	const postClickHandler = (id) => {
+		fetchSelectedPost(id, dispatch);
+		navigate(`/post/${id}`);
+	};
 	return (
-		<li className="post-card">
+		<li className="post-card" onClick={() => postClickHandler(post.id)}>
 			<div className="post-card-profile-pic">
 				<img alt="profile-picture" src={post.profileAvatar} />
 			</div>
@@ -66,47 +75,62 @@ export const PostsCard = ({ post }) => {
 				<div className="post-image">
 					{post.postImage && <img alt={post.content} src={post.postImage} />}
 				</div>
-
-				{!findBookmarkedPost ? (
-					<button
-						onClick={() => {
-							fetchBookmarkPost(post._id, dispatch);
-						}}
-					>
-						<i className="fa-sharp fa-regular fa-bookmark"></i>
-					</button>
-				) : (
-					<button
-						onClick={() => {
-							fetchRemoveBookmarkPost(post._id, dispatch);
-						}}
-					>
-						<i className="fa-sharp fa-solid fa-bookmark"></i>
-					</button>
-				)}
-				{setLikeOrDisLike ? (
-					<button onClick={() => fetchLikePost(post._id, dispatch)}>
-						<i className="fa-regular fa-heart"></i> {post.likes.likeCount}
-					</button>
-				) : (
-					<button onClick={() => fetchDisLikePost(post._id, dispatch)}>
-						<i className="fa-solid fa-heart"></i>
-						{post.likes.likeCount}
-					</button>
-				)}
-				{state.userInfo.username !== post.username && (
-					<div>
-						{!followUserHandler(post.username) ? (
-							<button onClick={() => followHandler(post.username)}>
-								Follow
+				<div>
+					{!findBookmarkedPost ? (
+						<button
+							onClick={() => {
+								fetchBookmarkPost(post._id, dispatch);
+							}}
+						>
+							<i className="fa-sharp fa-regular fa-bookmark"></i>
+						</button>
+					) : (
+						<button
+							onClick={() => {
+								fetchRemoveBookmarkPost(post._id, dispatch);
+							}}
+						>
+							<i className="fa-sharp fa-solid fa-bookmark"></i>
+						</button>
+					)}
+				</div>
+				<div>
+					{setLikeOrDisLike ? (
+						<button onClick={() => fetchLikePost(post._id, dispatch)}>
+							<i className="fa-regular fa-heart"></i> {post.likes.likeCount}
+						</button>
+					) : (
+						<button onClick={() => fetchDisLikePost(post._id, dispatch)}>
+							<i className="fa-solid fa-heart"></i>
+							{post.likes.likeCount}
+						</button>
+					)}
+				</div>
+				<div>
+					{state.userInfo.username !== post.username && (
+						<div>
+							{!followUserHandler(post.username) ? (
+								<button onClick={() => followHandler(post.username)}>
+									Follow
+								</button>
+							) : (
+								<button onClick={() => unfollowHandler(post.username)}>
+									Unfollow
+								</button>
+							)}
+						</div>
+					)}
+				</div>
+				<div>
+					{state.userInfo?.username === post.username && (
+						<>
+							<button onClick={() => editHandler(post._id)}>Edit</button>
+							<button onClick={() => fetchDeletePost(post._id, dispatch)}>
+								Delete
 							</button>
-						) : (
-							<button onClick={() => unfollowHandler(post.username)}>
-								Unfollow
-							</button>
-						)}
-					</div>
-				)}
+						</>
+					)}
+				</div>
 			</div>
 		</li>
 	);

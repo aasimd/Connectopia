@@ -25,14 +25,14 @@ export const users = [
 				fullName: "John Doe",
 				username: "johndoe",
 				profileAvatar: "https://picsum.photos/70/70"
+			},
+			{
+				_id: uuid(),
+				username: "moonknight",
+				fullName: "Saad Mukadam",
+				profileAvatar:
+					"https://assets-prd.ignimgs.com/2022/03/17/whythemcusmoonknightisverydifferentfromthecomics36190303moonknightthumb-1642630606707-1647532268585.jpg"
 			}
-			// {
-			// 	_id: uuid(),
-			// 	username: "moonknight",
-			// 	fullName: "Saad Mukadam",
-			// 	profileAvatar:
-			// 		"https://assets-prd.ignimgs.com/2022/03/17/whythemcusmoonknightisverydifferentfromthecomics36190303moonknightthumb-1642630606707-1647532268585.jpg"
-			// }
 		],
 		followers: [
 			{

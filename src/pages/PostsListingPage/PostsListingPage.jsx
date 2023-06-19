@@ -28,15 +28,17 @@ export const PostsListingPage = () => {
 			>
 				Check
 			</button>
-			{FollowingUsersPost().length > 0 ? (
-				<ul>
-					{FollowingUsersPost().map((post) => (
-						<PostsCard key={post._id} post={post} />
-					))}
-				</ul>
-			) : (
-				<h1>No posts to show</h1>
-			)}
+			<div>
+				{FollowingUsersPost().length > 0 ? (
+					<ul>
+						{FollowingUsersPost().map((post) => (
+							<PostsCard key={post._id} post={post} />
+						))}
+					</ul>
+				) : (
+					<h1>No posts to show</h1>
+				)}
+			</div>
 		</>
 	);
 };

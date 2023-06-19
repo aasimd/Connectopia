@@ -7,8 +7,8 @@ export const fetchPostsData = async (dispatch, state) => {
 		const response = await fetch("/api/posts", {
 			method: "GET"
 		});
-		const { posts } = await response.json();
-		dispatch({ type: "setPostsData", payload: posts });
+		const data = await response.json();
+		dispatch({ type: "setPostsData", payload: data?.posts });
 	} catch (e) {
 		console.error(e.message);
 	}
@@ -133,6 +133,49 @@ export const fetchUnfollowUser = async (id, dispatch) => {
 		});
 		const data = await response.json();
 		dispatch({ type: "setUserInfo", payload: data.user });
+	} catch (error) {
+		console.error(error.message);
+	}
+};
+
+export const fetchDeletePost = async (id, dispatch) => {
+	const encodedToken = localStorage.getItem("encodedToken");
+	try {
+		const response = await fetch(`/api/posts/${id}`, {
+			method: "DELETE",
+			headers: { authorization: `${encodedToken}` }
+		});
+		const data = await response.json();
+		dispatch({ type: "setPostsData", payload: data.posts });
+	} catch (error) {
+		console.error(error.message);
+	}
+};
+
+export const fetchEditPost = async (id, dispatch, post) => {
+	const encodedToken = localStorage.getItem("encodedToken");
+	try {
+		const response = await fetch(`/api/posts/edit/${id}`, {
+			method: "POST",
+			headers: { authorization: `${encodedToken}` },
+			body: JSON.stringify({
+				postData: post
+			})
+		});
+		const data = await response.json();
+		dispatch({ type: "setPostsData", payload: data.posts });
+	} catch (error) {
+		console.error(error.message);
+	}
+};
+
+export const fetchSelectedPost = async (id, dispatch) => {
+	try {
+		const response = await fetch(`/api/posts/${id}`, {
+			method: "GET"
+		});
+		const data = await response.json();
+		dispatch({ type: "setSelectedPost", payload: data.post });
 	} catch (error) {
 		console.error(error.message);
 	}

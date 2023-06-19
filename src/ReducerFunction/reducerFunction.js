@@ -14,6 +14,10 @@ export const reducerFunction = (state, { type, payload }) => {
 			return { ...state, bookmarkedPosts: payload };
 		case "setUsersData":
 			return { ...state, usersData: payload };
+		case "setSelectPostEdit":
+			return { ...state, selectPostEdit: payload };
+		case "setSelectedPost":
+			return { ...state, selectedPost: payload };
 		default:
 			return 2;
 	}
