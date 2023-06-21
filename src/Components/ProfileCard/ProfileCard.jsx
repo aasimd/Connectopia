@@ -47,7 +47,11 @@ export const ProfileCard = ({ userProfile }) => {
 									{state.postsData
 										.filter((post) => post.username === username)
 										.map((post) => (
-											<PostsCard key={post._id} post={post} />
+											<PostsCard
+												key={post._id}
+												post={post}
+												styles={"post-card"}
+											/>
 										))}
 								</ul>
 							) : (

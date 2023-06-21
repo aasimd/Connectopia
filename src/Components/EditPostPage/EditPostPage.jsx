@@ -8,16 +8,31 @@ import { useNavigate, useParams } from "react-router";
 
 export const EditPostPage = ({ post }) => {
 	const { state, dispatch } = useContext(PageContext);
-	const [tempPost, setTempPost] = useState({ content: post.content });
+	const [tempPost, setTempPost] = useState({
+		content: post.content,
+		postImage: post.postImage
+	});
 	const navigate = useNavigate();
 	const discardChangeHandler = () => {
 		setTempPost(() => ({ content: post.content }));
 		navigate("/posts");
 	};
-	const updatedPost = { ...post, content: tempPost.content };
+	const updatedPost = {
+		...post,
+		content: tempPost.content,
+		postImage: tempPost.postImage
+	};
 	const saveChangeHandler = () => {
 		fetchEditPost(post._id, dispatch, updatedPost);
 		navigate("/posts");
+	};
+	const deletePostImageHandler = () => {
+		setTempPost((prev) => ({ ...prev, postImage: "" }));
+		console.log(tempPost);
+	};
+	const uploadImageHandler = (event) => {
+		const image = URL.createObjectURL(event.target.files[0]);
+		setTempPost((p) => ({ ...p, postImage: image }));
 	};
 	return (
 		<div>
@@ -34,7 +49,19 @@ export const EditPostPage = ({ post }) => {
 						value={tempPost.content}
 					/>
 					<div>
-						{post.postImage && <img alt={post.content} src={post.postImage} />}
+						{tempPost.postImage !== "" ? (
+							<>
+								<button onClick={() => deletePostImageHandler()}>
+									delete image
+								</button>
+								<img alt={"uploaded-image"} src={tempPost.postImage} />
+							</>
+						) : (
+							<input
+								type="file"
+								onChange={(event) => uploadImageHandler(event)}
+							/>
+						)}
 					</div>
 				</div>
 				<div>

@@ -1,0 +1,13 @@
+*{
+    box-sizing: border-box;
+}
+
+.individual-post-page{
+    width: 500px;
+    margin: auto;
+    position: relative;
+}
+
+.comment-card{
+
+}

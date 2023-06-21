@@ -14,18 +14,20 @@ import {
 	fetchUnfollowUser
 } from "../../FetchFunctions/fetchFunctions";
 import { PageContext } from "../../Contexts/PageContext";
+import { ProfileImageAndNames } from "../ProfileImageAndNames/ProfileImageAndNames";
 
-export const PostsCard = ({ post }) => {
+export const PostsCard = ({ post, styles }) => {
 	const { state, dispatch } = useContext(PageContext);
 	const findBookmarkedPost = state.bookmarkedPosts.includes(post._id);
 	const navigate = useNavigate();
+
 	const isNotLiked = (id) => {
 		const findPost = state.postsData.find(
 			(currentpost) => currentpost?._id === id
 		);
 
 		return (
-			findPost.likes.likedBy.find(
+			findPost?.likes?.likedBy.find(
 				(user) => user?.username === state.userInfo?.username
 			) === undefined
 		);
@@ -60,13 +62,16 @@ export const PostsCard = ({ post }) => {
 		navigate(`/post/${id}`);
 	};
 	return (
-		<li className="post-card" onClick={() => postClickHandler(post.id)}>
-			<div className="post-card-profile-pic">
-				<img alt="profile-picture" src={post.profileAvatar} />
-			</div>
-			<div className="post-card-names">
-				<b>{post.fullName}</b>
-				<p>@{post.username}</p>
+		<li
+			className={styles}
+			// onClick={() => postClickHandler(post.id)}
+		>
+			<div>
+				<ProfileImageAndNames
+					fullName={post.fullName}
+					username={post.username}
+					profileImage={post.profileAvatar}
+				/>
 			</div>
 			<div className="post-card-content-container">
 				<div className="post-card-text-content">
@@ -97,12 +102,12 @@ export const PostsCard = ({ post }) => {
 				<div>
 					{setLikeOrDisLike ? (
 						<button onClick={() => fetchLikePost(post._id, dispatch)}>
-							<i className="fa-regular fa-heart"></i> {post.likes.likeCount}
+							<i className="fa-regular fa-heart"></i> {post?.likes?.likeCount}
 						</button>
 					) : (
 						<button onClick={() => fetchDisLikePost(post._id, dispatch)}>
 							<i className="fa-solid fa-heart"></i>
-							{post.likes.likeCount}
+							{post?.likes?.likeCount}
 						</button>
 					)}
 				</div>

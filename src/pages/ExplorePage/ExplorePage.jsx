@@ -22,7 +22,7 @@ export const ExplorePage = () => {
 			{DisplayData.length > 0 ? (
 				<ul>
 					{DisplayData.map((post) => (
-						<PostsCard key={post._id} post={post} />
+						<PostsCard key={post._id} post={post} styles={"post-card"}/>
 					))}
 				</ul>
 			) : (

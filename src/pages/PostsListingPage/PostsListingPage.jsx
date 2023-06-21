@@ -32,7 +32,7 @@ export const PostsListingPage = () => {
 				{FollowingUsersPost().length > 0 ? (
 					<ul>
 						{FollowingUsersPost().map((post) => (
-							<PostsCard key={post._id} post={post} />
+							<PostsCard key={post._id} post={post} styles={"post-card"} />
 						))}
 					</ul>
 				) : (

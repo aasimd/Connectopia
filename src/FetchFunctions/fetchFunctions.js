@@ -2,7 +2,7 @@
 
 import React from "react";
 
-export const fetchPostsData = async (dispatch, state) => {
+export const fetchPostsData = async (dispatch) => {
 	try {
 		const response = await fetch("/api/posts", {
 			method: "GET"
@@ -180,3 +180,31 @@ export const fetchSelectedPost = async (id, dispatch) => {
 		console.error(error.message);
 	}
 };
+
+export const getSelectedPost = async (id, dispatch) => {
+	try {
+		const response = await fetch(`/api/posts/${id}`, {
+			method: "GET"
+		});
+		const data = await response.json();
+		return data.post;
+	} catch (error) {
+		console.error(error.message);
+	}
+};
+
+// export const fetchAddComment = async (postId, commentData, dispatch) => {
+// 	const encodedToken = localStorage.getItem("encodedToken");
+// 	try {
+// 		const response = await fetch(`/api/comments/add/${postId}`, {
+// 			method: "POST",
+// 			body: commentData,
+// 			headers: { authorization: encodedToken }
+// 		});
+// 		const data = await response.json();
+// 		console.log(data);
+// 		// dispatch({ type: "setPostsData", payload: data.posts });
+// 	} catch (error) {
+// 		console.error(error.message);
+// 	}
+// };

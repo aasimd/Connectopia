@@ -1,0 +1,22 @@
+/** @format */
+
+* {
+	box-sizing: border-box;
+}
+
+.comment-card {
+	position: relative;
+	list-style: none;
+	/* border: 1px solid black; */
+	text-align: left;
+	padding: 2px 20px;
+}
+.comment-card .post-card-profile-names {
+	position: absolute;
+	margin-top: -20px;
+}
+.comment-content {
+	padding: 5px 0px 0px 50px;
+	font-weight: 400;
+	font-size: 18px;
+}
