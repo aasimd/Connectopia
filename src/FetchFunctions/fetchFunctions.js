@@ -169,7 +169,7 @@ export const fetchEditPost = async (id, dispatch, post) => {
 	}
 };
 
-export const fetchSelectedPost = async (id, dispatch) => {
+export const fetchSelectedPost = async (id, dispatch, state) => {
 	try {
 		const response = await fetch(`/api/posts/${id}`, {
 			method: "GET"
@@ -193,6 +193,50 @@ export const getSelectedPost = async (id, dispatch) => {
 	}
 };
 
+export const fetchCreateNewPost = async (dispatch, postData) => {
+	const encodedToken = localStorage.getItem("encodedToken");
+	try {
+		const response = await fetch(`/api/posts`, {
+			method: "POST",
+			body: JSON.stringify({ postData: postData }),
+			headers: { authorization: `${encodedToken}` }
+		});
+		const data = await response.json();
+		dispatch({ type: "setPostsData", payload: data?.posts });
+	} catch (e) {
+		console.error(e.message);
+	}
+};
+
+export const fetchEditProfile = async (dispatch, newUserInfo) => {
+	const encodedToken = localStorage.getItem("encodedToken");
+	try {
+		const response = await fetch(`/api/users/edit`, {
+			method: "POST",
+			headers: { authorization: `${encodedToken}` },
+			body: JSON.stringify({
+				userData: newUserInfo
+			})
+		});
+		const data = await response.json();
+		dispatch({ type: "setUserInfo", payload: data.user });
+	} catch (error) {
+		console.error(error.message);
+	}
+};
+
+export const fetchSelectedUserProfile = async (id, dispatch) => {
+	try {
+		const response = await fetch(`/api/users/${id}`, {
+			method: "GET"
+		});
+		const data = await response.json();
+		console.log(data.user);
+		dispatch({ type: "setSelectedUserProfile", payload: data.user });
+	} catch (error) {
+		console.error(error.message);
+	}
+};
 // export const fetchAddComment = async (postId, commentData, dispatch) => {
 // 	const encodedToken = localStorage.getItem("encodedToken");
 // 	try {

@@ -30,9 +30,9 @@ export const NavBar = () => {
 			<NavLink style={activeButtonStyles} to="/bookmarks">
 				Bookmarks
 			</NavLink>
-			<NavLink style={activeButtonStyles} to="/liked">
+			{/* <NavLink style={activeButtonStyles} to="/liked">
 				Liked Posts
-			</NavLink>
+			</NavLink> */}
 			<NavLink style={activeButtonStyles} to="/profile">
 				Profile
 			</NavLink>

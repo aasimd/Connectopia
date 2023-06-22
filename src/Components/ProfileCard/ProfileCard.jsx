@@ -1,9 +1,10 @@
 /** @format */
 
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { PageContext } from "../../Contexts/PageContext";
 import { PostsCard } from "../PostsCard/PostsCard";
 import { fetchPostsData } from "../../FetchFunctions/fetchFunctions";
+import { EditProfileCard } from "../EditProfileCard/EditProfileCard";
 
 export const ProfileCard = ({ userProfile }) => {
 	const {
@@ -17,8 +18,14 @@ export const ProfileCard = ({ userProfile }) => {
 		followers
 	} = userProfile;
 	const { state, dispatch } = useContext(PageContext);
+	const [editProfile, setEditProfile] = useState(false);
 	return (
 		<div>
+			<div>
+				{editProfile && (
+					<EditProfileCard user={userProfile} setEditProfile={setEditProfile} />
+				)}
+			</div>
 			<div>
 				<h1>User Profile</h1>
 				<section>
@@ -28,13 +35,15 @@ export const ProfileCard = ({ userProfile }) => {
 					<div>
 						<b>{fullName}</b>
 						<p>@{username}</p>
-						{state.userInfo?.username === username && (
-							<button>Edit Profile</button>
-						)}
 					</div>
 					<div>
 						<p>{bio}</p>
 						<a href={website}>{website}</a>
+					</div>
+					<div>
+						{state.userInfo?.username === username && (
+							<button onClick={() => setEditProfile(true)}>Edit Profile</button>
+						)}
 					</div>
 				</section>
 				<section>

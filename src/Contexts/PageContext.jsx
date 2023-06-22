@@ -63,7 +63,8 @@ export const PageContextProvider = ({ children }) => {
 		bookmarkedPosts: [],
 		usersData: [],
 		selectPostEdit: {},
-		selectedPost: {}
+		selectedPost: {},
+		selectedUserProfile: {}
 	});
 	const DisplayData = state.postsData;
 	const FollowingUsersPost = () => {

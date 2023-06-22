@@ -13,6 +13,7 @@ import { ExplorePage } from "./pages/ExplorePage/ExplorePage";
 import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
 import { EditPostPage } from "./Components/EditPostPage/EditPostPage";
 import { IndividualPostPage } from "./pages/IndividualPostPage/IndividualPostPage";
+import { UserProfilePage } from "./pages/UserProfilePage/UserProfilePage";
 
 function App() {
 	const { state, dispatch } = useContext(PageContext);
@@ -34,7 +35,8 @@ function App() {
 					path="/postEdit"
 					element={<EditPostPage post={state.selectPostEdit} />}
 				/>
-				<Route path="/post/:postId" element={<IndividualPostPage />} />
+				<Route path="/posts/:postId" element={<IndividualPostPage />} />
+				<Route path="/users/:userId" element={<UserProfilePage />} />
 			</Routes>
 		</div>
 	);

@@ -6,15 +6,19 @@ import { PostsCard } from "../../Components/PostsCard/PostsCard";
 import { ProfileImageAndNames } from "../../Components/ProfileImageAndNames/ProfileImageAndNames";
 import "./IndividualPostPage.css";
 import { CommentCard } from "../../Components/CommentCard/CommentCard";
-import { NewCommentCard } from "../../Components/NewCommentCard/NewCommentCard";
-import { fetchPostsData } from "../../FetchFunctions/fetchFunctions";
+import {
+	fetchPostsData,
+	fetchSelectedPost
+} from "../../FetchFunctions/fetchFunctions";
 
 export const IndividualPostPage = () => {
 	const { state, dispatch } = useContext(PageContext);
 	const { selectedPost, userInfo } = state;
 	useEffect(() => {
 		fetchPostsData(dispatch);
+		fetchSelectedPost(selectedPost.id, dispatch, state);
 	}, [state?.postsData]);
+
 	return (
 		<div className="individual-post-page">
 			<div>

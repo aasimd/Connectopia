@@ -16,7 +16,7 @@ import {
 import { PageContext } from "../../Contexts/PageContext";
 import { ProfileImageAndNames } from "../ProfileImageAndNames/ProfileImageAndNames";
 
-export const PostsCard = ({ post, styles }) => {
+export const PostsCard = ({ post, styles, showDate }) => {
 	const { state, dispatch } = useContext(PageContext);
 	const findBookmarkedPost = state.bookmarkedPosts.includes(post._id);
 	const navigate = useNavigate();
@@ -25,7 +25,6 @@ export const PostsCard = ({ post, styles }) => {
 		const findPost = state.postsData.find(
 			(currentpost) => currentpost?._id === id
 		);
-
 		return (
 			findPost?.likes?.likedBy.find(
 				(user) => user?.username === state.userInfo?.username
@@ -53,32 +52,62 @@ export const PostsCard = ({ post, styles }) => {
 		fetchUnfollowUser(getUser._id, dispatch);
 	};
 	const editHandler = (id) => {
-		const findPostToEdit = state.postsData.find((post) => post._id === id);
-		dispatch({ type: "setSelectPostEdit", payload: findPostToEdit });
+		const postToEdit = state.postsData.find((post) => post._id === id);
+		dispatch({ type: "setSelectPostEdit", payload: postToEdit });
 		navigate(`/postEdit`);
 	};
+	const CheckHandler = () => {
+		console.log(post.createdAt);
+	};
+	const getDate = () => {
+		const date = new Date(post?.createdAt);
+		const dateFormat = new Intl.DateTimeFormat("en-us", {
+			dateStyle: "medium"
+		});
+		const formatDate = dateFormat.format(date);
+		return formatDate;
+	};
+	const dateOfPost = getDate();
+
 	const postClickHandler = (id) => {
-		fetchSelectedPost(id, dispatch);
-		navigate(`/post/${id}`);
+		fetchSelectedPost(id, dispatch, state);
+		setTimeout(() => {
+			navigate(`/posts/${id}`);
+		}, 1000);
+	};
+	const userProfileClickHandler = (username) => {
+		const userId = state.usersData.find(({ username }) => username);
+		console.log(userId);
 	};
 	return (
-		<li
-			className={styles}
-			// onClick={() => postClickHandler(post.id)}
-		>
-			<div>
-				<ProfileImageAndNames
-					fullName={post.fullName}
-					username={post.username}
-					profileImage={post.profileAvatar}
-				/>
+		<li className={styles}>
+			<button onClick={() => CheckHandler()}>Check</button>
+			<div className="top-order">
+				<div onClick={() => userProfileClickHandler(post.username)}>
+					<ProfileImageAndNames
+						fullName={post.fullName}
+						username={post.username}
+						profileImage={post.profileAvatar}
+						showDate={true}
+						date={dateOfPost}
+					/>
+				</div>
 			</div>
 			<div className="post-card-content-container">
-				<div className="post-card-text-content">
+				<div
+					className="post-card-text-content"
+					onClick={() => postClickHandler(post.id)}
+				>
 					<p>{post.content}</p>
 				</div>
 				<div className="post-image">
-					{post.postImage && <img alt={post.content} src={post.postImage} />}
+					{post.postImage && (
+						<img
+							onClick={() => postClickHandler(post.id)}
+							alt={post.content}
+							src={post.postImage}
+						/>
+					)}
 				</div>
 				<div>
 					{!findBookmarkedPost ? (

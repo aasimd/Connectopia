@@ -4,6 +4,15 @@
 	box-sizing: border-box;
 }
 
+.profile-image-and-names-card {
+	width: 500px;
+	margin: auto;
+	position: relative;
+	padding: 20px;
+	text-align: left;
+	border-radius: 10px;
+}
+
 .post-card-profile-names {
 	position: absolute;
 	top: 15px;

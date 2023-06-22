@@ -1,0 +1,16 @@
+/** @format */
+
+* {
+	box-sizing: border-box;
+}
+
+.bookmarks-page {
+	width: 450px;
+	margin: auto;
+	position: relative;
+	list-style: none;
+}
+.bookmarks-page ul {
+	position: relative;
+	list-style: none;
+}

@@ -10,6 +10,7 @@ import {
 	fetchUsersList
 } from "../../FetchFunctions/fetchFunctions";
 import { PostsCard } from "../../Components/PostsCard/PostsCard";
+import { CreatePostCard } from "../../Components/CreatePostCard/CreatePostCard";
 
 export const PostsListingPage = () => {
 	const { state, dispatch, DisplayData, FollowingUsersPost } =
@@ -18,22 +19,33 @@ export const PostsListingPage = () => {
 		fetchPostsData(dispatch, state);
 		fetchGetBookmarks(dispatch);
 	}, [DisplayData, state.bookmarkedPosts]);
+
 	return (
 		<>
 			<h1>Posts Listing Page</h1>
 			<button
 				onClick={() => {
-					console.log(state.userInfo);
+					console.log(state.postsData);
 				}}
 			>
 				Check
 			</button>
 			<div>
+				<CreatePostCard />
+			</div>
+			<div>
 				{FollowingUsersPost().length > 0 ? (
 					<ul>
-						{FollowingUsersPost().map((post) => (
-							<PostsCard key={post._id} post={post} styles={"post-card"} />
-						))}
+						{[...FollowingUsersPost()]
+							.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+							.map((post) => (
+								<PostsCard
+									key={post.id}
+									post={post}
+									styles={"post-card"}
+									showDate={true}
+								/>
+							))}
 					</ul>
 				) : (
 					<h1>No posts to show</h1>

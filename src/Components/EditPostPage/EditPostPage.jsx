@@ -5,6 +5,7 @@ import "./EditPostPage.css";
 import { PageContext } from "../../Contexts/PageContext";
 import { fetchEditPost } from "../../FetchFunctions/fetchFunctions";
 import { useNavigate, useParams } from "react-router";
+import { ProfileImageAndNames } from "../ProfileImageAndNames/ProfileImageAndNames";
 
 export const EditPostPage = ({ post }) => {
 	const { state, dispatch } = useContext(PageContext);
@@ -28,7 +29,6 @@ export const EditPostPage = ({ post }) => {
 	};
 	const deletePostImageHandler = () => {
 		setTempPost((prev) => ({ ...prev, postImage: "" }));
-		console.log(tempPost);
 	};
 	const uploadImageHandler = (event) => {
 		const image = URL.createObjectURL(event.target.files[0]);
@@ -37,9 +37,13 @@ export const EditPostPage = ({ post }) => {
 	return (
 		<div>
 			<div className="edit-post-card">
-				{/* <div>
-				<img src={post.profileAvatar} alt="profile" />
-			</div> */}
+				<div>
+					<ProfileImageAndNames
+						fullName={post.fullName}
+						username={post.username}
+						profileImage={post.profileAvatar}
+					/>
+				</div>
 				<div>
 					<textarea
 						onChange={(e) =>
@@ -50,12 +54,12 @@ export const EditPostPage = ({ post }) => {
 					/>
 					<div>
 						{tempPost.postImage !== "" ? (
-							<>
+							<div className="edit-image-container">
 								<button onClick={() => deletePostImageHandler()}>
 									delete image
 								</button>
 								<img alt={"uploaded-image"} src={tempPost.postImage} />
-							</>
+							</div>
 						) : (
 							<input
 								type="file"
