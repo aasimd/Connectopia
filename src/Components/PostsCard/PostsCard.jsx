@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./PostsCard.css";
 import {
@@ -11,7 +11,8 @@ import {
 	fetchLikePost,
 	fetchRemoveBookmarkPost,
 	fetchSelectedPost,
-	fetchUnfollowUser
+	fetchUnfollowUser,
+	fetchUsersList
 } from "../../FetchFunctions/fetchFunctions";
 import { PageContext } from "../../Contexts/PageContext";
 import { ProfileImageAndNames } from "../ProfileImageAndNames/ProfileImageAndNames";
@@ -20,7 +21,11 @@ export const PostsCard = ({ post, styles, showDate }) => {
 	const { state, dispatch } = useContext(PageContext);
 	const findBookmarkedPost = state.bookmarkedPosts.includes(post._id);
 	const navigate = useNavigate();
-
+	const [usersData, setUsersData] = useState({
+		profileAvatar: "",
+		username: post?.username,
+		fullName: post?.fullName
+	});
 	const isNotLiked = (id) => {
 		const findPost = state.postsData.find(
 			(currentpost) => currentpost?._id === id
@@ -75,19 +80,24 @@ export const PostsCard = ({ post, styles, showDate }) => {
 			navigate(`/posts/${id}`);
 		}, 1000);
 	};
-	const userProfileClickHandler = (username) => {
-		const userId = state.usersData.find(({ username }) => username);
-		console.log(userId);
+
+	const findUser = (username) => {
+		const user = state.usersData.find((user) => user.username === username);
+		setUsersData((p) => ({ ...p, profileAvatar: user.profileAvatar }));
 	};
+	useEffect(() => {
+		fetchUsersList(dispatch);
+		findUser(post.username);
+	}, [state.usersData]);
 	return (
 		<li className={styles}>
 			<button onClick={() => CheckHandler()}>Check</button>
 			<div className="top-order">
-				<div onClick={() => userProfileClickHandler(post.username)}>
+				<div>
 					<ProfileImageAndNames
 						fullName={post.fullName}
 						username={post.username}
-						profileImage={post.profileAvatar}
+						profileImage={usersData.profileAvatar}
 						showDate={true}
 						date={dateOfPost}
 					/>

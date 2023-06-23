@@ -39,12 +39,9 @@ export const PostsListingPage = () => {
 						{[...FollowingUsersPost()]
 							.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
 							.map((post) => (
-								<PostsCard
-									key={post.id}
-									post={post}
-									styles={"post-card"}
-									showDate={true}
-								/>
+								<li key={post.id}>
+									<PostsCard post={post} styles={"post-card"} showDate={true} />
+								</li>
 							))}
 					</ul>
 				) : (

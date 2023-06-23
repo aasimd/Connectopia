@@ -8,7 +8,7 @@ export const fetchPostsData = async (dispatch) => {
 			method: "GET"
 		});
 		const data = await response.json();
-		dispatch({ type: "setPostsData", payload: data?.posts });
+		dispatch({ type: "setPostsData", payload: data.posts });
 	} catch (e) {
 		console.error(e.message);
 	}
@@ -231,7 +231,6 @@ export const fetchSelectedUserProfile = async (id, dispatch) => {
 			method: "GET"
 		});
 		const data = await response.json();
-		console.log(data.user);
 		dispatch({ type: "setSelectedUserProfile", payload: data.user });
 	} catch (error) {
 		console.error(error.message);

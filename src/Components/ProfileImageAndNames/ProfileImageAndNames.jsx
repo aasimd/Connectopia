@@ -14,10 +14,21 @@ export const ProfileImageAndNames = ({
 	date
 }) => {
 	const { state, dispatch } = useContext(PageContext);
-
-	
-
+	const findUser = state.usersData.find((user) => user.username === username);
 	const navigate = useNavigate();
+	const userProfileClickHandler = (username) => {
+		if (username === state.userInfo?.username) {
+			setTimeout(() => {
+				navigate(`/profile`);
+			}, 1000);
+		} else {
+			const userId = state.usersData.find((user) => user.username === username);
+			fetchSelectedUserProfile(userId._id, dispatch);
+			setTimeout(() => {
+				navigate(`/users/${userId._id}`);
+			}, 1000);
+		}
+	};
 	return (
 		<div className="profile-image-and-names-card">
 			<div className="post-card-profile-pic">
@@ -25,21 +36,29 @@ export const ProfileImageAndNames = ({
 					alt="profile-picture"
 					src={profileImage}
 					onClick={() => {
-						// userProfileClickHandler(username);
-						// fetchSelectedUserProfile(userId._id, dispatch);
-
-						// setTimeout(() => {
-						// 	navigate(`/users/${userId._id}`);
-						// }, 1000);
+						userProfileClickHandler(username);
+						console.log(findUser);
 					}}
 				/>
 			</div>
 			<div className="post-card-profile-names">
 				<b>
-					{fullName}
+					<span
+						onClick={() => {
+							userProfileClickHandler(username);
+						}}
+					>
+						{fullName}
+					</span>
 					{showDate && <span> - {date}</span>}
 				</b>
-				<p>@{username}</p>
+				<p
+					onClick={() => {
+						userProfileClickHandler(username);
+					}}
+				>
+					@{username}
+				</p>
 			</div>
 		</div>
 	);

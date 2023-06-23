@@ -5,7 +5,7 @@ import { PageContext } from "../../Contexts/PageContext";
 import { PostsCard } from "../PostsCard/PostsCard";
 import { fetchPostsData } from "../../FetchFunctions/fetchFunctions";
 import { EditProfileCard } from "../EditProfileCard/EditProfileCard";
-
+import "./ProfileCard.css";
 export const ProfileCard = ({ userProfile }) => {
 	const {
 		username,
@@ -29,7 +29,7 @@ export const ProfileCard = ({ userProfile }) => {
 			<div>
 				<h1>User Profile</h1>
 				<section>
-					<div>
+					<div className="profile-page-profile-picture-container">
 						<img src={profileAvatar} alt="profile" />
 					</div>
 					<div>
