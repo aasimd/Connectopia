@@ -14,16 +14,14 @@ import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
 import { EditPostPage } from "./Components/EditPostPage/EditPostPage";
 import { IndividualPostPage } from "./pages/IndividualPostPage/IndividualPostPage";
 import { UserProfilePage } from "./pages/UserProfilePage/UserProfilePage";
+import { SetupAccountPage } from "./pages/SetupAccountPage/SetupAccountPage";
 
 function App() {
 	const { state, dispatch } = useContext(PageContext);
 
 	return (
 		<div className="App">
-			<nav>
-				<NavBar />
-			</nav>
-			<h1>Hello World</h1>
+			
 			<Routes>
 				<Route path="/" element={<LoginPage />} />
 				<Route path="/mockman" element={<Mockman />} />
@@ -37,6 +35,7 @@ function App() {
 				/>
 				<Route path="/posts/:postId" element={<IndividualPostPage />} />
 				<Route path="/users/:userId" element={<UserProfilePage />} />
+				<Route path="/setupaccount" element={<SetupAccountPage />} />
 			</Routes>
 		</div>
 	);

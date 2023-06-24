@@ -10,6 +10,7 @@ import {
 	fetchPostsData,
 	fetchSelectedPost
 } from "../../FetchFunctions/fetchFunctions";
+import { NavBar } from "../../Components/NavBar/NavBar";
 
 export const IndividualPostPage = () => {
 	const { state, dispatch } = useContext(PageContext);
@@ -21,6 +22,9 @@ export const IndividualPostPage = () => {
 
 	return (
 		<div className="individual-post-page">
+			<nav>
+				<NavBar />
+			</nav>
 			<div>
 				<div>
 					<PostsCard post={selectedPost} styles={"individual-post"} />

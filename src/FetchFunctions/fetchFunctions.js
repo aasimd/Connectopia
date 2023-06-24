@@ -28,6 +28,20 @@ export const fetchLoginUser = async (state, dispatch, loginData) => {
 	}
 };
 
+export const fetchSignUpUser = async (state, dispatch, userData) => {
+	try {
+		const response = await fetch(`/api/auth/signup`, {
+			method: "POST",
+			body: JSON.stringify(userData)
+		});
+		const data = await response.json();
+		dispatch({ type: "setUserInfo", payload: data.createdUser });
+		localStorage.setItem("encodedToken", data.encodedToken);
+	} catch (e) {
+		console.error(e.message);
+	}
+};
+
 export const fetchBookmarkPost = async (id, dispatch) => {
 	const encodedToken = localStorage.getItem("encodedToken");
 	try {

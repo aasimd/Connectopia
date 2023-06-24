@@ -61,9 +61,6 @@ export const PostsCard = ({ post, styles, showDate }) => {
 		dispatch({ type: "setSelectPostEdit", payload: postToEdit });
 		navigate(`/postEdit`);
 	};
-	const CheckHandler = () => {
-		console.log(post.createdAt);
-	};
 	const getDate = () => {
 		const date = new Date(post?.createdAt);
 		const dateFormat = new Intl.DateTimeFormat("en-us", {
@@ -91,7 +88,6 @@ export const PostsCard = ({ post, styles, showDate }) => {
 	}, [state.usersData]);
 	return (
 		<li className={styles}>
-			<button onClick={() => CheckHandler()}>Check</button>
 			<div className="top-order">
 				<div>
 					<ProfileImageAndNames

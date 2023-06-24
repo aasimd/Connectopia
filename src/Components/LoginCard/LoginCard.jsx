@@ -7,7 +7,7 @@ import {
 } from "../../FetchFunctions/fetchFunctions";
 import { PageContext } from "../../Contexts/PageContext";
 import { useNavigate } from "react-router";
-
+import "./LoginCard.css";
 export const LoginCard = ({ setPageState }) => {
 	const { state, dispatch } = useContext(PageContext);
 	const [showPassword, setShowPassword] = useState(false);
@@ -37,9 +37,9 @@ export const LoginCard = ({ setPageState }) => {
 		}));
 	};
 	return (
-		<div>
+		<div className="login-card">
 			<h1>Login</h1>
-			<form>
+			<form onSubmit={(event) => submitHandler(event)}>
 				<label>
 					Username: {"  "}
 					<input
@@ -59,6 +59,7 @@ export const LoginCard = ({ setPageState }) => {
 						onChange={(event) => passwordHandler(event)}
 						value={loginData.password}
 						required
+						style={{ color: "#ff3b30", fontStyle: "italic" }}
 					/>
 				</label>
 				<br />
@@ -71,16 +72,12 @@ export const LoginCard = ({ setPageState }) => {
 					Show Password
 				</label>
 				<br />
-				<input
-					type="submit"
-					value="Submit"
-					onClick={(event) => submitHandler(event)}
-				/>
+				<input type="submit" value="Submit" />
 			</form>
 			<button onClick={useGuestCredsHandler}>Use Guest Credentials</button>
 			<br />
 			<button onClick={() => setPageState(() => "signup")}>
-				Create a new Account
+				New Here? Create a new Account...
 			</button>
 		</div>
 	);

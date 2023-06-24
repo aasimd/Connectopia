@@ -1,0 +1,113 @@
+/** @format */
+
+* {
+	box-sizing: border-box;
+}
+.login-card {
+	padding: 2rem 1rem;
+}
+.login-card h1 {
+	color: var(--main-color);
+	font-size: 2rem;
+	font-weight: 700;
+}
+.login-card form label {
+	color: var(--black-color);
+	font-size: 1.2rem;
+	font-weight: 500;
+}
+.login-card form label input[type="text"],
+.login-card form label input[type="password"] {
+	width: 70%;
+	margin: 10px;
+	padding: 10px;
+	font-size: 1.2rem;
+	border-radius: 10px;
+	border: 1px solid var(--gray-color);
+}
+
+.login-card form input[type="submit"] {
+	margin-top: 20px;
+	padding: 10px 20px;
+	font-size: 1.2rem;
+	color: white;
+	background-color: var(--main-color);
+	font-weight: 600;
+	border: none;
+	border-radius: 10px;
+}
+.login-card button:nth-of-type(1) {
+	margin-top: 10px;
+	padding: 10px 20px;
+	font-size: 1.2rem;
+	background-color: white;
+	color: var(--main-color);
+	font-weight: 400;
+	border: 2px solid var(--main-color);
+	border-radius: 10px;
+}
+.login-card button:nth-of-type(2) {
+	margin-top: 10px;
+	padding: 10px 20px;
+	font-size: 1.2rem;
+	background-color: white;
+	color: var(--main-color);
+	font-weight: 400;
+	border: none;
+	border-radius: 10px;
+}
+@media screen and (min-width: 650px) {
+	.login-card {
+		padding: 3rem 1rem;
+	}
+	.login-card h1 {
+		color: var(--main-color);
+		font-size: 2.5rem;
+		font-weight: 700;
+	}
+	.login-card form label {
+		color: var(--black-color);
+		font-size: 1.5rem;
+		font-weight: 500;
+	}
+	.login-card form label input[type="text"],
+	.login-card form label input[type="password"] {
+		width: 70%;
+		margin: 10px;
+		padding: 10px;
+		font-size: 1.5rem;
+		border-radius: 10px;
+		border: 1px solid var(--gray-color);
+	}
+
+	.login-card form input[type="submit"] {
+		margin-top: 20px;
+		padding: 10px 20px;
+		font-size: 1.5rem;
+		color: white;
+		background-color: var(--main-color);
+		font-weight: 600;
+		border: none;
+		border-radius: 10px;
+	}
+	.login-card button:nth-of-type(1) {
+		margin-top: 10px;
+		padding: 10px 20px;
+		font-size: 1.5rem;
+		background-color: white;
+		color: var(--main-color);
+		font-weight: 400;
+		border: 2px solid var(--main-color);
+		border-radius: 10px;
+	}
+	.login-card button:nth-of-type(2) {
+		margin-top: 10px;
+		padding: 10px 20px;
+		font-size: 1.5rem;
+		background-color: white;
+		color: var(--main-color);
+		font-weight: 400;
+		border: none;
+		border-radius: 10px;
+	}
+}
