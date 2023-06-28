@@ -22,8 +22,8 @@ html {
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
-	align-self: center;
-	justify-content: center;
+	/* align-self: center; */
+	justify-content: flex-start;
 }
 .login-page {
 	display: flex;
@@ -123,7 +123,7 @@ html {
 		display: flex;
 		flex-direction: column;
 		align-self: center;
-		justify-content: center;
+		justify-content: flex-start;
 	}
 	.login-page {
 		display: flex;

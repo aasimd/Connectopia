@@ -7,7 +7,8 @@ button {
 	cursor: pointer;
 }
 .signup-card {
-	padding: 1rem 1rem;
+	padding: 1rem;
+	margin-top: -2rem;
 	/* text-align: left; */
 }
 .signup-card form {
@@ -56,11 +57,13 @@ button {
 }
 @media screen and (min-width: 650px) {
 	.signup-card {
-		padding: 3rem 1rem;
+		padding: 1rem;
+		margin-top: -2rem;
 		/* text-align: left; */
 	}
 	.signup-card form {
-		text-align: center;
+		text-align: left;
+		padding: 0rem 0.5rem 2rem 0.5rem;
 	}
 	.signup-card h1 {
 		color: var(--main-color);
