@@ -3,12 +3,17 @@
 * {
 	box-sizing: border-box;
 }
+button {
+	cursor: pointer;
+}
 .signup-card {
-	padding: 2rem 1rem;
+	padding: 1rem 1rem;
 	/* text-align: left; */
 }
 .signup-card form {
-	text-align: center;
+	margin: auto;
+	width: 90%;
+	text-align: left;
 }
 .signup-card h1 {
 	color: var(--main-color);
@@ -20,9 +25,9 @@
 	font-size: 1.2rem;
 	font-weight: 500;
 }
-.signup-card form label input[type="text"],
-.signup-card form label input[type="password"] {
-	width: 65%;
+.signup-card form input[type="text"],
+.signup-card form input[type="password"] {
+	width: 100%;
 	margin: 10px;
 	padding: 10px;
 	font-size: 1.2rem;
@@ -50,50 +55,99 @@
 	border-radius: 10px;
 }
 @media screen and (min-width: 650px) {
-    .signup-card {
-        padding: 3rem 1rem;
-        /* text-align: left; */
-    }
-    .signup-card form {
-        text-align: center;
-    }
-    .signup-card h1 {
-        color: var(--main-color);
-        font-size: 2.5rem;
-        font-weight: 700;
-    }
-    .signup-card form label {
-        color: var(--black-color);
-        font-size: 1.5rem;
-        font-weight: 500;
-    }
-    .signup-card form label input[type="text"],
-    .signup-card form label input[type="password"] {
-        width: 65%;
-        margin: 10px;
-        padding: 10px;
-        font-size: 1.5rem;
-        border-radius: 10px;
-        border: 1px solid var(--gray-color);
-    }
-    .signup-card form input[type="submit"] {
-        margin-top: 20px;
-        padding: 10px 20px;
-        font-size: 1.5rem;
-        color: white;
-        background-color: var(--main-color);
-        font-weight: 600;
-        border: none;
-        border-radius: 10px;
-    }
-    .signup-card button {
-        margin-top: 10px;
-        padding: 10px 20px;
-        font-size: 1.5rem;
-        background-color: white;
-        color: var(--main-color);
-        font-weight: 400;
-        border: none;
-        border-radius: 10px;
-    }
+	.signup-card {
+		padding: 3rem 1rem;
+		/* text-align: left; */
+	}
+	.signup-card form {
+		text-align: center;
+	}
+	.signup-card h1 {
+		color: var(--main-color);
+		font-size: 2.5rem;
+		font-weight: 700;
+	}
+	.signup-card form label {
+		color: var(--black-color);
+		font-size: 1.5rem;
+		font-weight: 500;
+	}
+	.signup-card form label input[type="text"],
+	.signup-card form label input[type="password"] {
+		width: 65%;
+		margin: 10px;
+		padding: 10px;
+		font-size: 1.5rem;
+		border-radius: 10px;
+		border: 1px solid var(--gray-color);
+	}
+	.signup-card form input[type="submit"] {
+		margin-top: 20px;
+		padding: 10px 20px;
+		font-size: 1.5rem;
+		color: white;
+		background-color: var(--main-color);
+		font-weight: 600;
+		border: none;
+		border-radius: 10px;
+	}
+	.signup-card button {
+		margin-top: 10px;
+		padding: 10px 20px;
+		font-size: 1.5rem;
+		background-color: white;
+		color: var(--main-color);
+		font-weight: 400;
+		border: none;
+		border-radius: 10px;
+	}
+}
+@media screen and (min-width: 1028px) {
+	.signup-card {
+		padding: 3rem 1rem;
+		/* text-align: left; */
+	}
+	.signup-card form {
+		text-align: left;
+	}
+	.signup-card h1 {
+		color: var(--main-color);
+		font-size: 2.5rem;
+		font-weight: 700;
+	}
+	.signup-card form label {
+		color: var(--black-color);
+		font-size: 1.5rem;
+		font-weight: 500;
+	}
+	.signup-card form label input[type="text"],
+	.signup-card form label input[type="password"] {
+		width: 65%;
+		margin: 10px;
+		padding: 10px;
+		font-size: 1.5rem;
+		border-radius: 10px;
+		border: 1px solid var(--gray-color);
+	}
+	.signup-card form input[type="submit"] {
+		margin: 20px auto;
+		padding: 10px 20px;
+		font-size: 1.5rem;
+		color: white;
+		background-color: var(--main-color);
+		font-weight: 600;
+		border: none;
+		border-radius: 10px;
+		/* margin: auto; */
+	}
+	.signup-card button {
+		margin-top: 10px;
+		padding: 10px 20px;
+		font-size: 1.5rem;
+		background-color: white;
+		color: var(--main-color);
+		font-weight: 400;
+		border: none;
+		border-radius: 10px;
+	}
 }

@@ -31,45 +31,40 @@ export const SignupCard = ({ setPageState }) => {
 			<h1>Signup</h1>
 			<form onSubmit={(event) => formSubmitHandler(event)}>
 				<div>
-					<label>
-						First name:
-						<input
-							type="text"
-							name="firstname"
-							value={newUserInfo?.firstName}
-							required
-							onChange={(event) =>
-								setNewUserInfo((p) => ({ ...p, firstName: event.target.value }))
-							}
-						/>
-					</label>
+					<label>First name:</label>
+					<input
+						type="text"
+						name="firstname"
+						value={newUserInfo?.firstName}
+						required
+						onChange={(event) =>
+							setNewUserInfo((p) => ({ ...p, firstName: event.target.value }))
+						}
+					/>
 				</div>
 				<div>
-					<label>
-						Last name:
-						<input
-							type="text"
-							name="lastname"
-							value={newUserInfo?.lastName}
-							onChange={(event) =>
-								setNewUserInfo((p) => ({ ...p, lastName: event.target.value }))
-							}
-						/>
-					</label>
+					<label>Last name:</label>
+					<input
+						type="text"
+						name="lastname"
+						value={newUserInfo?.lastName}
+						onChange={(event) =>
+							setNewUserInfo((p) => ({ ...p, lastName: event.target.value }))
+						}
+					/>
 				</div>
 				<div>
-					<label>
-						Username: {"  "}
-						<input
-							type="text"
-							name="username"
-							required
-							value={newUserInfo?.username}
-							onChange={(event) =>
-								setNewUserInfo((p) => ({ ...p, username: event.target.value }))
-							}
-						/>
-					</label>
+					<label>Username: </label>
+					{"  "}
+					<input
+						type="text"
+						name="username"
+						required
+						value={newUserInfo?.username}
+						onChange={(event) =>
+							setNewUserInfo((p) => ({ ...p, username: event.target.value }))
+						}
+					/>
 				</div>
 				{/*<div>
 				  <label>
@@ -78,19 +73,17 @@ export const SignupCard = ({ setPageState }) => {
 				  </label>
 				</div> */}
 				<div>
-					<label>
-						Password:
-						<input
-							type={showPassword ? "text" : "password"}
-							name="password"
-							required
-							value={newUserInfo?.password}
-							onChange={(event) =>
-								setNewUserInfo((p) => ({ ...p, password: event.target.value }))
-							}
-							style={{ color: "#ff3b30", fontStyle: "italic" }}
-						/>
-					</label>
+					<label>Password:</label>
+					<input
+						type={showPassword ? "text" : "password"}
+						name="password"
+						required
+						value={newUserInfo?.password}
+						onChange={(event) =>
+							setNewUserInfo((p) => ({ ...p, password: event.target.value }))
+						}
+						style={{ color: "#ff3b30", fontStyle: "italic" }}
+					/>
 				</div>
 				<div>
 					<label>

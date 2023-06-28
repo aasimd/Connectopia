@@ -7,7 +7,7 @@
 	--main-color: #ff3b30;
 	--black-color: #333333;
 	--gray-color: #888888;
-	--light-gray-color: rgb(228, 227, 227);
+	--light-gray-color: rgb(241, 241, 241);
 }
 html {
 	scroll-snap-type: y mandatory;
@@ -16,6 +16,14 @@ html {
 .login-signup-card {
 	scroll-snap-align: start;
 	height: 100vh;
+}
+.login-signup-card {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-self: center;
+	justify-content: center;
 }
 .login-page {
 	display: flex;
@@ -39,7 +47,7 @@ html {
 	padding: 2px;
 }
 .login-page section {
-	margin-top: 15%;
+	margin-top: 10%;
 }
 .login-page div section p {
 	font-size: 0.7rem;
@@ -54,14 +62,14 @@ html {
 	color: var(--gray-color);
 }
 .landing-page-logo-container {
-	margin-top: 3rem;
+	margin-top: 1rem;
 	width: 90%;
 }
 .landing-page-logo-container img {
-	width: 100%;
+	width: 90%;
 }
 .landing-page-join-now {
-	margin: 5rem auto;
+	margin: 1rem auto;
 	text-align: center;
 }
 .landing-page-join-now {
@@ -76,26 +84,29 @@ html {
 .login-signup-card {
 	background-color: var(--light-gray-color);
 }
-.login-signup-card div:first-child {
+/* .login-signup-card div:first-child {
 	background-color: white;
 	width: 80%;
 	margin: auto;
-	border-radius: 20px;
-	/* text-align: center; */
-	/* border: 1px solid; */
-	/* display: flex; */
-	/* flex-direction: column; */
-}
+	border-radius: 20px; */
+/* text-align: center; */
+/* border: 1px solid; */
+/* display: flex; */
+/* flex-direction: column; */
+/* } */
 .landing-page-join-now::after {
-	content: "\a\2193\2193\2193";
+	position: relative;
+	top: 2.5rem;
+	right: 6.5rem;
+	content: "\a\2193\2193";
 	font-size: 40px;
 	font-weight: 900;
 }
-.landing-page-join-now::before {
+/* .landing-page-join-now::before {
 	content: "\2193\2193\2193\a";
 	font-size: 40px;
 	font-weight: 900;
-}
+} */
 
 @media screen and (min-width: 650px) {
 	html {
@@ -105,6 +116,14 @@ html {
 	.login-signup-card {
 		scroll-snap-align: start;
 		height: 100vh;
+	}
+	.login-signup-card {
+		width: 100%;
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		align-self: center;
+		justify-content: center;
 	}
 	.login-page {
 		display: flex;
@@ -128,7 +147,7 @@ html {
 		padding: 2px;
 	}
 	.login-page section {
-		margin-top: 10%;
+		margin-top: 5%;
 	}
 	.login-page div section p {
 		font-size: 1rem;
@@ -147,10 +166,10 @@ html {
 		width: 90%;
 	}
 	.landing-page-logo-container img {
-		width: 90%;
+		width: 80%;
 	}
 	.landing-page-join-now {
-		margin: 4rem auto;
+		margin: 1rem auto;
 		text-align: center;
 	}
 	.landing-page-join-now {
@@ -165,6 +184,9 @@ html {
 }
 
 @media screen and (min-width: 1028px) {
+	* {
+		box-sizing: border-box;
+	}
 	html {
 		scroll-snap-type: none;
 	}
@@ -174,14 +196,23 @@ html {
 	}
 	.login-signup-card {
 		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		align-self: center;
+		justify-content: center;
+		background-color: var(--light-gray-color);
+		width: 80%;
+		margin: auto;
+		border-radius: 20px;
 	}
 	.login-page {
+		/* margin: 2rem; */
 		display: grid;
-		grid-template-columns: 50% 50%;
+		grid-template-columns: 1fr 1fr;
 	}
 	.login-page .intro-card {
 		margin-top: 0.5rem;
-		padding: 20px;
+		padding: 2rem;
 		text-align: left;
 	}
 	.connectopia-name-header h1 {
