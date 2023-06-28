@@ -80,6 +80,13 @@ export const PageContextProvider = ({ children }) => {
 		);
 		return followingUsersPosts;
 	};
+	const followingUsers = state?.userInfo?.following?.map(
+		({ username }) => username
+	);
+	const suggestedUsers = state?.usersData
+		?.filter(({ username }) => !followingUsers?.includes(username))
+		?.filter(({ username }) => username !== state?.userInfo?.username);
+	
 	useEffect(() => {
 		fetchUsersList(dispatch);
 	}, []);
@@ -89,7 +96,8 @@ export const PageContextProvider = ({ children }) => {
 				state,
 				dispatch,
 				DisplayData,
-				FollowingUsersPost
+				FollowingUsersPost,
+				suggestedUsers,followingUsers
 			}}
 		>
 			{children}

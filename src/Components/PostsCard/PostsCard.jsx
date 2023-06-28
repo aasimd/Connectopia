@@ -88,7 +88,7 @@ export const PostsCard = ({ post, styles, showDate }) => {
 	}, [state.usersData]);
 	return (
 		<li className={styles}>
-			<div className="top-order">
+			<div>
 				<div>
 					<ProfileImageAndNames
 						fullName={post.fullName}

@@ -12,10 +12,16 @@ import {
 import { PostsCard } from "../../Components/PostsCard/PostsCard";
 import { CreatePostCard } from "../../Components/CreatePostCard/CreatePostCard";
 import { NavBar } from "../../Components/NavBar/NavBar";
-
+import { SuggestedUsersCard } from "../../Components/FollowUsersCards/SuggestedUsersCard/SuggestedUsersCard";
 export const PostsListingPage = () => {
-	const { state, dispatch, DisplayData, FollowingUsersPost } =
-		useContext(PageContext);
+	const {
+		state,
+		dispatch,
+		DisplayData,
+		FollowingUsersPost,
+		suggestedUsers,
+		followingUsers
+	} = useContext(PageContext);
 	useEffect(() => {
 		fetchPostsData(dispatch, state);
 		fetchGetBookmarks(dispatch);
@@ -23,39 +29,44 @@ export const PostsListingPage = () => {
 
 	return (
 		<div>
-			<nav>
-				<NavBar />
-			</nav>
-			<div>
-				<h1>Posts Listing Page</h1>
-				<button
+			<h1>Posts Listing Page</h1>
+			<div className="three-sections-page">
+				<nav>
+					<NavBar />
+				</nav>
+				<div>
+					{/* <button
 					onClick={() => {
-						console.log(state.postsData);
+						console.log(suggestedUsers, followingUsers);
 					}}
 				>
 					Check
-				</button>
-				<div>
-					<CreatePostCard />
+				</button> */}
+					<div>
+						<CreatePostCard />
+					</div>
+					<div>
+						{FollowingUsersPost().length > 0 ? (
+							<ul>
+								{[...FollowingUsersPost()]
+									.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+									.map((post) => (
+										<li key={post.id}>
+											<PostsCard
+												post={post}
+												styles={"post-card"}
+												showDate={true}
+											/>
+										</li>
+									))}
+							</ul>
+						) : (
+							<h1>No posts to show</h1>
+						)}
+					</div>
 				</div>
 				<div>
-					{FollowingUsersPost().length > 0 ? (
-						<ul>
-							{[...FollowingUsersPost()]
-								.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-								.map((post) => (
-									<li key={post.id}>
-										<PostsCard
-											post={post}
-											styles={"post-card"}
-											showDate={true}
-										/>
-									</li>
-								))}
-						</ul>
-					) : (
-						<h1>No posts to show</h1>
-					)}
+					<SuggestedUsersCard />
 				</div>
 			</div>
 		</div>

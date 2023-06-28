@@ -6,6 +6,7 @@
 :root {
 	--main-color: #ff3b30;
 	--black-color: #333333;
+	--medium-gray-color: #cec5c5;
 	--gray-color: #888888;
 	--light-gray-color: rgb(241, 241, 241);
 }
@@ -73,7 +74,7 @@ html {
 	text-align: center;
 }
 .landing-page-join-now {
-	font-size: 2rem;
+	font-size: 1.5rem;
 	text-transform: uppercase;
 	color: var(--main-color);
 	border: none;
@@ -96,10 +97,10 @@ html {
 /* } */
 .landing-page-join-now::after {
 	position: relative;
-	top: 2.5rem;
-	right: 6.5rem;
+	/* top: 2.5rem;
+	right: 6.5rem; */
 	content: "\a\2193\2193";
-	font-size: 40px;
+	font-size: 2rem;
 	font-weight: 900;
 }
 /* .landing-page-join-now::before {
@@ -188,10 +189,10 @@ html {
 		box-sizing: border-box;
 	}
 	html {
-		scroll-snap-type: none;
+		scroll-snap-type: y mandatory;
 	}
 	.intro-card {
-		scroll-snap-align: none;
+		/* scroll-snap-align: none; */
 		height: 90vh;
 	}
 	.login-signup-card {

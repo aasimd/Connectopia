@@ -3,39 +3,64 @@
 import React, { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { PageContext } from "../../Contexts/PageContext";
-
+import "./NavBar.css";
+import { ProfileImageAndNames } from "../ProfileImageAndNames/ProfileImageAndNames";
 const activeButtonStyles = ({ isActive }) =>
 	isActive
-		? { color: "red", padding: "10px", fontWeight: "600" }
-		: { color: "black", padding: "5px", fontWeight: "200" };
+		? {
+				color: "#ff3b30",
+				padding: "10px",
+				fontWeight: "600",
+				backgroundColor: "#cec5c5",
+				borderRadius: "10px"
+		  }
+		: { padding: "5px", fontWeight: "200" };
 export const NavBar = () => {
 	const { state, dispatch } = useContext(PageContext);
 	const navigate = useNavigate();
+	const { profileAvatar, fullName, username } = state?.userInfo;
 	return (
-		<div>
-			<button
-				onClick={() => {
-					navigate("/");
-					dispatch({ type: "setLogin", payload: false });
-				}}
-			>
-				Logout
-			</button>
-			<NavLink style={activeButtonStyles} to="/posts">
-				Home
-			</NavLink>
-			<NavLink style={activeButtonStyles} to="/explore">
-				Explore
-			</NavLink>
-			<NavLink style={activeButtonStyles} to="/bookmarks">
-				Bookmarks
-			</NavLink>
-			{/* <NavLink style={activeButtonStyles} to="/liked">
+		<div className="nav-bar-card">
+			<div>
+				<div className="profile-nav-link">
+					<NavLink style={activeButtonStyles} to="/profile">
+						<ProfileImageAndNames
+							profileImage={profileAvatar}
+							fullName={fullName}
+							username={username}
+						/>
+					</NavLink>
+				</div>
+				<div className="nav-bar-links">
+					<NavLink style={activeButtonStyles} to="/posts">
+						{/* <i className="fa-solid fa-house"></i>  */}
+						Home
+					</NavLink>
+					<NavLink style={activeButtonStyles} to="/explore">
+						{/* <i className="fa-solid fa-compass"></i>  */}
+						Explore
+					</NavLink>
+					<NavLink style={activeButtonStyles} to="/bookmarks">
+						{/* <i className="fa-solid fa-bookmark"></i>  */}
+						Bookmarks
+					</NavLink>
+					{/* <NavLink style={activeButtonStyles} to="/liked">
 				Liked Posts
 			</NavLink> */}
-			<NavLink style={activeButtonStyles} to="/profile">
-				Profile
-			</NavLink>
+				</div>
+				<div>
+					<button
+						className="logout-btn"
+						onClick={() => {
+							navigate("/");
+							dispatch({ type: "setLogin", payload: false });
+						}}
+					>
+						{/* <i className="fa-solid fa-right-from-bracket"></i> */}
+						Logout
+					</button>
+				</div>
+			</div>
 		</div>
 	);
 };
