@@ -40,8 +40,8 @@ export const LoginCard = ({ setPageState }) => {
 		<div className="login-card">
 			<h1>Login</h1>
 			<form onSubmit={(event) => submitHandler(event)}>
-				<label>
-					Username: {"  "}
+				<div>
+					<label>Username: </label>
 					<input
 						type="text"
 						name="username"
@@ -49,10 +49,9 @@ export const LoginCard = ({ setPageState }) => {
 						value={loginData.username}
 						required
 					/>
-				</label>
-				<br />
-				<label>
-					Password: {"  "}
+				</div>
+				<div>
+					<label>Password: </label>
 					<input
 						type={showPassword ? "text" : "password"}
 						name="password"
@@ -61,18 +60,20 @@ export const LoginCard = ({ setPageState }) => {
 						required
 						style={{ color: "#ff3b30", fontStyle: "italic" }}
 					/>
-				</label>
-				<br />
-				<label>
-					<input
-						type="checkbox"
-						name="show-password"
-						onChange={() => setShowPassword(() => !showPassword)}
-					/>
-					Show Password
-				</label>
-				<br />
-				<input type="submit" value="Submit" />
+				</div>
+				<div>
+					<label>
+						<input
+							type="checkbox"
+							name="show-password"
+							onChange={() => setShowPassword(() => !showPassword)}
+						/>
+						Show Password
+					</label>
+				</div>
+				<div>
+					<input type="submit" value="Submit" />
+				</div>
 			</form>
 			<button onClick={useGuestCredsHandler}>Use Guest Credentials</button>
 			<br />

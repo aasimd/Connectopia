@@ -7,7 +7,7 @@ button {
 	cursor: pointer;
 }
 .signup-card {
-	padding: 1rem;
+	padding-bottom: 1rem;
 	margin-top: -2rem;
 	/* text-align: left; */
 }
@@ -20,6 +20,8 @@ button {
 	color: var(--main-color);
 	font-size: 2rem;
 	font-weight: 700;
+	margin-top: 0%;
+    margin-bottom: 2%;
 }
 .signup-card form label {
 	color: var(--black-color);
