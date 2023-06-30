@@ -13,6 +13,8 @@ import { PostsCard } from "../../Components/PostsCard/PostsCard";
 import { CreatePostCard } from "../../Components/CreatePostCard/CreatePostCard";
 import { NavBar } from "../../Components/NavBar/NavBar";
 import { SuggestedUsersCard } from "../../Components/FollowUsersCards/SuggestedUsersCard/SuggestedUsersCard";
+import "./PostsListingPage.css";
+import "../../App.css";
 export const PostsListingPage = () => {
 	const {
 		state,
@@ -28,20 +30,12 @@ export const PostsListingPage = () => {
 	}, [DisplayData, state.bookmarkedPosts]);
 
 	return (
-		<div>
-			<h1>Posts Listing Page</h1>
-			<div className="three-sections-page">
-				<nav>
-					<NavBar />
-				</nav>
-				<div>
-					{/* <button
-					onClick={() => {
-						console.log(suggestedUsers, followingUsers);
-					}}
-				>
-					Check
-				</button> */}
+		<div className="three-sections-page">
+			<nav className="left-column">
+				<NavBar />
+			</nav>
+			<div className="middle-column">
+				<div className="posts-container">
 					<div>
 						<CreatePostCard />
 					</div>
@@ -65,9 +59,9 @@ export const PostsListingPage = () => {
 						)}
 					</div>
 				</div>
-				<div>
-					<SuggestedUsersCard />
-				</div>
+			</div>
+			<div>
+				<SuggestedUsersCard className="right-column" />
 			</div>
 		</div>
 	);

@@ -42,5 +42,27 @@
 	/* display: grid;
 	grid-template-columns:  300px 1fr 300px; */
 	display: flex;
-  flex-direction: row;
+	/* flex-direction: row; */
+}
+.left-column {
+	/* flex: 1;
+	background-color: lightgray;
+	padding: 10px; */
+}
+.middle-column {
+	/* flex: 2;
+	background-color: lightblue;
+	padding: 10px; */
+	overflow-y: auto;
+}
+.middle-column::-webkit-scrollbar {
+	display: none; /* Hide the scrollbar */
+}
+.posts-container {
+	height: 100vh;
+}
+.right-column {
+	/* /* flex: 1; */
+	background-color: var(--light-gray-color);
+	padding: 10px;
 }

@@ -1,0 +1,46 @@
+/** @format */
+* {
+	box-sizing: border-box;
+}
+.suggested-users-card {
+	width: 120%;
+	padding: 20px;
+	float: left;
+	/* border: 1px solid; */
+	height: 100vh;
+	background-color: var(--light-gray-color);
+}
+.suggested-users-card div {
+	width: 100%;
+}
+.suggested-users-card label {
+	font-size: 1.2rem;
+}
+.suggested-users-card .search-users-section div input[type="search"] {
+	width: 250px;
+	padding: 10px;
+	font-size: 1.2rem;
+	border: 1px solid var(--medium-gray-color);
+	border-radius: 15px;
+	color: var(--main-color);
+}
+.suggested-users-card .search-users-section div:nth-of-type(1) {
+	text-align: left;
+}
+.users-search-results-section {
+	list-style: none;
+}
+.users-search-results-section ul {
+	/* border: 1px solid; */
+	background-color: white;
+}
+.users-search-results-section ul li {
+	border: 1px solid;
+	padding: 10px;
+    position: relative;
+    text-align: left;
+}
+.users-search-results-section ul li div:nth-of-type(2){
+    /* position: absolute; */
+
+}

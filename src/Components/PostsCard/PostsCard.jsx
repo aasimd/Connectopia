@@ -16,6 +16,12 @@ import {
 } from "../../FetchFunctions/fetchFunctions";
 import { PageContext } from "../../Contexts/PageContext";
 import { ProfileImageAndNames } from "../ProfileImageAndNames/ProfileImageAndNames";
+import { isNotLiked } from "../../Functions/isNotLiked";
+import {
+	followHandler,
+	followUserHandler,
+	unfollowHandler
+} from "../../Functions/followUserHandler";
 
 export const PostsCard = ({ post, styles, showDate }) => {
 	const { state, dispatch } = useContext(PageContext);
@@ -26,36 +32,9 @@ export const PostsCard = ({ post, styles, showDate }) => {
 		username: post?.username,
 		fullName: post?.fullName
 	});
-	const isNotLiked = (id) => {
-		const findPost = state.postsData.find(
-			(currentpost) => currentpost?._id === id
-		);
-		return (
-			findPost?.likes?.likedBy.find(
-				(user) => user?.username === state.userInfo?.username
-			) === undefined
-		);
-	};
-	const setLikeOrDisLike = isNotLiked(post._id);
-	const followUserHandler = (followusername) => {
-		const followingUsers = state.userInfo?.following?.map(
-			({ username }) => username
-		);
-		const findUserInFollowing = followingUsers.includes(followusername);
-		return findUserInFollowing;
-	};
-	const followHandler = (followusername) => {
-		const getUser = state.usersData?.find(
-			(user) => user.username === followusername
-		);
-		fetchFollowUser(getUser._id, dispatch);
-	};
-	const unfollowHandler = (followusername) => {
-		const getUser = state.usersData?.find(
-			(user) => user.username === followusername
-		);
-		fetchUnfollowUser(getUser._id, dispatch);
-	};
+
+	const setLikeOrDisLike = isNotLiked(post._id, state);
+
 	const editHandler = (id) => {
 		const postToEdit = state.postsData.find((post) => post._id === id);
 		dispatch({ type: "setSelectPostEdit", payload: postToEdit });
@@ -149,12 +128,18 @@ export const PostsCard = ({ post, styles, showDate }) => {
 				<div>
 					{state.userInfo.username !== post.username && (
 						<div>
-							{!followUserHandler(post.username) ? (
-								<button onClick={() => followHandler(post.username)}>
+							{!followUserHandler(post.username, state) ? (
+								<button
+									onClick={() => followHandler(post.username, state, dispatch)}
+								>
 									Follow
 								</button>
 							) : (
-								<button onClick={() => unfollowHandler(post.username)}>
+								<button
+									onClick={() =>
+										unfollowHandler(post.username, state, dispatch)
+									}
+								>
 									Unfollow
 								</button>
 							)}
