@@ -6,6 +6,7 @@ import { PostsCard } from "../PostsCard/PostsCard";
 import { fetchPostsData } from "../../FetchFunctions/fetchFunctions";
 import { EditProfileCard } from "../EditProfileCard/EditProfileCard";
 import "./ProfileCard.css";
+import { useNavigate } from "react-router";
 export const ProfileCard = ({ userProfile }) => {
 	const {
 		username,
@@ -19,36 +20,59 @@ export const ProfileCard = ({ userProfile }) => {
 	} = userProfile;
 	const { state, dispatch } = useContext(PageContext);
 	const [editProfile, setEditProfile] = useState(false);
+	const navigate = useNavigate();
+	useEffect(() => {
+		fetchPostsData(dispatch);
+	}, [state.postsData]);
 	return (
 		<div>
-			<div>
+			{/* <div>
 				{editProfile && (
 					<EditProfileCard user={userProfile} setEditProfile={setEditProfile} />
 				)}
+			</div> */}
+			<div>
+				<h1 className="page-heading-name ">
+					{state?.userInfo?.username === userProfile?.username
+						? "Your "
+						: "User "}
+					Profile
+				</h1>
 			</div>
 			<div>
-				<h1>User Profile</h1>
-				<section>
+				<section className="profile-info-section">
 					<div className="profile-page-profile-picture-container">
 						<img src={profileAvatar} alt="profile" />
 					</div>
-					<div>
-						<b>{fullName}</b>
-						<p>@{username}</p>
-					</div>
-					<div>
-						<p>{bio}</p>
-						<a href={website}>{website}</a>
-					</div>
-					<div>
-						{state.userInfo?.username === username && (
-							<button onClick={() => setEditProfile(true)}>Edit Profile</button>
-						)}
+					<div className="profile-info-card">
+						<div>
+							<b className="profile-fullname">{fullName}</b>
+							<p className="profile-username">@{username}</p>
+						</div>
+						<div>
+							<p className="profile-bio">{bio}</p>
+							<a className="profile-website" href={website}>
+								<i style={{ color: "green" }} className="fa-solid fa-globe"></i>{" "}
+								{website}
+							</a>
+						</div>
+						<div className="edit-profile-button">
+							{state.userInfo?.username === username && (
+								<button onClick={() => navigate("/setupaccount")}>
+									Edit Profile
+								</button>
+							)}
+						</div>
 					</div>
 				</section>
 				<section>
 					<div>
-						<h1>Your Posts</h1>
+						<h1>
+							{state?.userInfo?.username === userProfile?.username
+								? "Your "
+								: "User "}
+							Posts
+						</h1>
 						<ul>
 							{state.postsData.filter((post) => post.username === username)
 								.length > 0 ? (

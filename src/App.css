@@ -78,3 +78,7 @@
 .three-sections-page::-webkit-scrollbar {
 	display: none;
 }
+.page-heading-name {
+	border-bottom: 2px solid black;
+	padding: 10px;
+}

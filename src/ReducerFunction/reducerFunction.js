@@ -20,6 +20,8 @@ export const reducerFunction = (state, { type, payload }) => {
 			return { ...state, selectedPost: payload };
 		case "setSelectedUserProfile":
 			return { ...state, selectedUserProfile: payload };
+		case "setSortType":
+			return { ...state, sortType: payload };
 		default:
 			return state;
 	}

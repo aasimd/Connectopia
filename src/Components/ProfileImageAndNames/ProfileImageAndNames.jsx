@@ -50,7 +50,7 @@ export const ProfileImageAndNames = ({
 					>
 						{fullName}
 					</span>
-					{showDate && <span> - {date}</span>}
+					{showDate && <span className="date-span"> - {date}</span>}
 				</b>
 				<p
 					onClick={() => {

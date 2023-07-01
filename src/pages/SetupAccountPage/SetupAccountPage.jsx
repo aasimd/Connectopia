@@ -10,12 +10,17 @@ export const backUpProfileAvatar =
 	"https://pro2-bar-s3-cdn-cf2.myportfolio.com/dddb0c1b4ab622854dd81280840458d3/351efdd5c9879db23df33bde_rw_600.png?h=e1e19e4f0eb5c66ca9eceb0e9438b2ca";
 
 export const SetupAccountPage = () => {
-	const [newUserProfileData, setNewUserProfileData] = useState({
-		bio: "",
-		website: "",
-		profileAvatar: backUpProfileAvatar
-	});
 	const { state, dispatch } = useContext(PageContext);
+	const { fullName, username, profileAvatar, bio, website } = state?.userInfo;
+
+	const [newUserProfileData, setNewUserProfileData] = useState({
+		fullName: fullName,
+		username: username,
+		bio: bio,
+		website: website,
+		profileAvatar: profileAvatar
+	});
+
 	const uploadProfileAvatarHandler = (event) => {
 		const image = URL.createObjectURL(event.target.files[0]);
 		setNewUserProfileData((p) => ({ ...p, profileAvatar: image }));
@@ -25,9 +30,11 @@ export const SetupAccountPage = () => {
 		event.preventDefault();
 		const userData = {
 			...state.userInfo,
-			profileAvatar: newUserProfileData.profileAvatar,
-			bio: newUserProfileData.bio,
-			website: newUserProfileData.website
+			fullName: newUserProfileData?.fullName,
+			username: newUserProfileData?.username,
+			profileAvatar: newUserProfileData?.profileAvatar,
+			bio: newUserProfileData?.bio,
+			website: newUserProfileData?.website
 		};
 		fetchEditProfile(dispatch, userData);
 		setTimeout(() => {
@@ -47,6 +54,36 @@ export const SetupAccountPage = () => {
 				</div>
 				<div className="setup-profile-form">
 					<form onSubmit={(event) => submitFormHandler(event)}>
+						<div>
+							<label>Username:</label>
+							<br />
+							<input
+								type="text"
+								placeholder="Enter your username here"
+								value={newUserProfileData?.username}
+								onChange={(event) =>
+									setNewUserProfileData((p) => ({
+										...p,
+										username: event.target.value
+									}))
+								}
+							/>
+						</div>
+						<div>
+							<label>Full Name:</label>
+							<br />
+							<input
+								type="text"
+								placeholder="Enter your Full name"
+								value={newUserProfileData?.fullName}
+								onChange={(event) =>
+									setNewUserProfileData((p) => ({
+										...p,
+										fullName: event.target.value
+									}))
+								}
+							/>
+						</div>
 						<div>
 							<label>Bio:</label>
 							<textarea

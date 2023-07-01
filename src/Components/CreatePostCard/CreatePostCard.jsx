@@ -28,7 +28,7 @@ export const CreatePostCard = () => {
 	const deleteImageHandler = () => {
 		setNewPost((p) => ({ ...p, postImage: "" }));
 	};
-	
+
 	const createNewPost = {
 		content: newPost?.content,
 		postImage: newPost?.postImage,
@@ -73,7 +73,10 @@ export const CreatePostCard = () => {
 			</div>
 			<div>
 				{newPost?.postImage === "" ? (
-					<input type="file" onChange={(event) => selectUploadImage(event)} />
+					<>
+						Upload photo:{" "}
+						<input type="file" onChange={(event) => selectUploadImage(event)} />
+					</>
 				) : (
 					<div className="upload-image-container">
 						<button onClick={() => deleteImageHandler()}>Delete Image</button>

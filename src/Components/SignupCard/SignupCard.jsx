@@ -5,6 +5,7 @@ import { PageContext } from "../../Contexts/PageContext";
 import { fetchSignUpUser } from "../../FetchFunctions/fetchFunctions";
 import { useNavigate } from "react-router";
 import "./SignupCard.css";
+import { backUpProfileAvatar } from "../../pages/SetupAccountPage/SetupAccountPage";
 export const SignupCard = ({ setPageState }) => {
 	const { state, dispatch } = useContext(PageContext);
 	const [showPassword, setShowPassword] = useState(false);
@@ -12,7 +13,10 @@ export const SignupCard = ({ setPageState }) => {
 		firstName: "",
 		lastName: "",
 		password: "",
-		username: ""
+		username: "",
+		bio: "",
+		website: "",
+		profileAvatar: backUpProfileAvatar
 	});
 	const navigate = useNavigate();
 	const formSubmitHandler = (event) => {

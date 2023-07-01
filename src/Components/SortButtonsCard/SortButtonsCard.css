@@ -1,0 +1,43 @@
+/** @format */
+
+* {
+	box-sizing: border-box;
+}
+
+.sort-options-section {
+	position: relative;
+	padding: 10px;
+	border-top: 2px solid var(--gray-color);
+}
+.sort-options-button {
+	right: -220px;
+	position: relative;
+	z-index: 8;
+}
+.sort-options-button button {
+	color: var(--main-color);
+	background-color: white;
+	border: none;
+	font-size: 1.8rem;
+}
+.sort-options-card {
+	position: absolute;
+    top: -5px;
+	right: 5px;
+	z-index: 6;
+	background-color: white;
+	padding: 10px;
+}
+.sort-inputs {
+    padding: 20px;
+    box-shadow: 0 0 6px 2px rgba(0,0,0,0.3);
+    text-align: left;
+}
+.display-sort-type {
+	font-weight: 600;
+	padding: 2px;
+	font-size: 1.4rem;
+	position: absolute;
+	text-transform: capitalize;
+    color: var(--main-color);
+}

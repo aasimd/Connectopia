@@ -64,9 +64,21 @@ export const PageContextProvider = ({ children }) => {
 		usersData: [],
 		selectPostEdit: {},
 		selectedPost: {},
-		selectedUserProfile: {}
+		selectedUserProfile: {},
+		sortType: "trending"
 	});
-	const DisplayData = state.postsData;
+	const DisplayData = [...state.postsData].sort((a, b) => {
+		if (state?.sortType === "trending") {
+			return b.likes.likeCount - a.likes.likeCount;
+		}
+		if (state?.sortType === "oldest") {
+			return new Date(a.createdAt) - new Date(b.createdAt);
+		}
+		if (state?.sortType === "latest") {
+			return new Date(b.createdAt) - new Date(a.createdAt);
+		}
+		return a - b;
+	});
 	const FollowingUsersPost = () => {
 		const followingUsers =
 			state.userInfo?.following !== undefined
@@ -75,7 +87,7 @@ export const PageContextProvider = ({ children }) => {
 						state.userInfo?.username
 				  ]
 				: [state.userInfo?.username];
-		const followingUsersPosts = state.postsData?.filter((post) =>
+		const followingUsersPosts = DisplayData?.filter((post) =>
 			followingUsers.includes(post?.username)
 		);
 		return followingUsersPosts;
@@ -86,7 +98,7 @@ export const PageContextProvider = ({ children }) => {
 	const suggestedUsers = state?.usersData
 		?.filter(({ username }) => !followingUsers?.includes(username))
 		?.filter(({ username }) => username !== state?.userInfo?.username);
-	
+
 	useEffect(() => {
 		fetchUsersList(dispatch);
 	}, []);
@@ -97,7 +109,8 @@ export const PageContextProvider = ({ children }) => {
 				dispatch,
 				DisplayData,
 				FollowingUsersPost,
-				suggestedUsers,followingUsers
+				suggestedUsers,
+				followingUsers
 			}}
 		>
 			{children}

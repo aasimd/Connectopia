@@ -4,6 +4,7 @@ import React, { useContext, useState } from "react";
 import "./EditProfileCard.css";
 import { fetchEditProfile } from "../../FetchFunctions/fetchFunctions";
 import { PageContext } from "../../Contexts/PageContext";
+import { backUpProfileAvatar } from "../../pages/SetupAccountPage/SetupAccountPage";
 
 export const EditProfileCard = ({ user, setEditProfile }) => {
 	const { state, dispatch } = useContext(PageContext);
@@ -29,8 +30,14 @@ export const EditProfileCard = ({ user, setEditProfile }) => {
 		setEditProfile(false);
 	};
 	const saveChangesHandler = () => {
-		fetchEditProfile(dispatch, newUserInfo);
-		setEditProfile(false);
+		if (newUserInfo?.profileAvatar.length === 0) {
+			setNewUserInfo((p) => ({ ...p, profileAvatar: backUpProfileAvatar }));
+			fetchEditProfile(dispatch, newUserInfo);
+			setEditProfile(false);
+		} else {
+			fetchEditProfile(dispatch, newUserInfo);
+			setEditProfile(false);
+		}
 	};
 	return (
 		<div>

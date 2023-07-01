@@ -24,15 +24,15 @@ ul {
 }
 .post-card .post-image {
 	width: 300px;
-	margin: auto;
+	margin: 10px auto;
 	border-radius: 5px;
 }
 .individual-post .post-image {
 	width: 400px;
-	margin: auto;
+	margin: 10px auto;
 	border-radius: 5px;
 }
-.post-card-content-container.post-image img,
+
 .post-card-content-container .post-image img {
 	margin: auto;
 	width: 100%;
@@ -140,14 +140,13 @@ ul {
 }
 .bookmark-button button,
 .like-button button {
-	
 	font-size: 1.2rem;
 	background-color: white;
 	border: none;
 }
-.bookmark-button button{
+.bookmark-button button {
 	color: green;
 }
-.like-button button{
+.like-button button {
 	color: var(--main-color);
 }

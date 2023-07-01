@@ -41,3 +41,8 @@
 	object-position: 50% 50%;
 	border-radius: 50%;
 }
+.date-span {
+	font-size: 1rem;
+	font-weight: 400;
+	color: var(--gray-color);
+}

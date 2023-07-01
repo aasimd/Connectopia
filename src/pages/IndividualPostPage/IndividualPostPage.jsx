@@ -11,30 +11,41 @@ import {
 	fetchSelectedPost
 } from "../../FetchFunctions/fetchFunctions";
 import { NavBar } from "../../Components/NavBar/NavBar";
+import { SuggestedUsersCard } from "../../Components/FollowUsersCards/SuggestedUsersCard/SuggestedUsersCard";
+import { useNavigate } from "react-router";
 
 export const IndividualPostPage = () => {
 	const { state, dispatch } = useContext(PageContext);
 	const { selectedPost, userInfo } = state;
+	const navigate = useNavigate();
 	useEffect(() => {
 		fetchPostsData(dispatch);
 		fetchSelectedPost(selectedPost.id, dispatch, state);
 	}, [state?.postsData]);
 
 	return (
-		<div className="individual-post-page">
-			<nav>
+		<div className="three-sections-page">
+			<nav className="left-column">
 				<NavBar />
 			</nav>
 			<div>
-				<div>
-					<PostsCard post={selectedPost} styles={"individual-post"} />
+				<div className="middle-column">
+					<div className="posts-container individual-post-page">
+						<div className="back-button-section">
+							<button onClick={() => navigate("/posts")}>
+								<i className="fa-solid fa-arrow-left"></i>
+							</button>{" "}
+							Post
+						</div>
+						<PostsCard post={selectedPost} styles={"individual-post"} />
+					</div>
 				</div>
-				<hr />
+				{/* <hr /> */}
 				{/* <div>
 					<NewCommentCard profileAvatar={userInfo?.profileAvatar} />
 				</div> 
 				<hr />*/}
-				<div>
+				{/* <div>
 					<ul>
 						{selectedPost?.comments?.map((comment) => (
 							<li key={comment._id} className="comment-card">
@@ -42,7 +53,10 @@ export const IndividualPostPage = () => {
 							</li>
 						))}
 					</ul>
-				</div>
+				</div> */}
+			</div>
+			<div>
+				<SuggestedUsersCard className="right-column" />
 			</div>
 		</div>
 	);

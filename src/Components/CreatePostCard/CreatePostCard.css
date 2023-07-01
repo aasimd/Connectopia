@@ -5,17 +5,19 @@
 }
 .create-new-post-card {
 	width: 500px;
-	margin: auto;
+	margin: -1rem auto 0.2rem auto;
 	position: relative;
 	padding: 20px;
 	text-align: left;
-	box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.2);
+	/* box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.2); */
 	border-radius: 10px;
 }
 .create-new-post-card textarea {
 	resize: none;
-	height: 100px;
+	height: 50px;
 	border: none;
+	overflow: hidden;
+	margin-top: -1rem;
 }
 .create-new-post-card .upload-image-container img {
 	width: 100%;

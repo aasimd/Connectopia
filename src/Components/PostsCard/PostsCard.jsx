@@ -95,9 +95,29 @@ export const PostsCard = ({ post, styles, showDate }) => {
 					)}
 				</div>
 				<div className="like-and-bookmark-button">
+					<div className="like-button">
+						{setLikeOrDisLike ? (
+							<button
+								title="Like post"
+								onClick={() => fetchLikePost(post._id, dispatch)}
+							>
+								<i className="fa-regular fa-heart"></i>{" "}
+								{post?.likes?.likeCount !== 0 && <>{post?.likes?.likeCount}</>}
+							</button>
+						) : (
+							<button
+								title="Dislike post"
+								onClick={() => fetchDisLikePost(post._id, dispatch)}
+							>
+								<i className="fa-solid fa-heart"></i>
+								{post?.likes?.likeCount !== 0 && <>{post?.likes?.likeCount}</>}
+							</button>
+						)}
+					</div>
 					<div className="bookmark-button">
 						{!findBookmarkedPost ? (
 							<button
+								title="Bookmark post"
 								onClick={() => {
 									fetchBookmarkPost(post._id, dispatch);
 								}}
@@ -106,23 +126,12 @@ export const PostsCard = ({ post, styles, showDate }) => {
 							</button>
 						) : (
 							<button
+								title="Remove Bookmark post"
 								onClick={() => {
 									fetchRemoveBookmarkPost(post._id, dispatch);
 								}}
 							>
 								<i className="fa-sharp fa-solid fa-bookmark"></i>
-							</button>
-						)}
-					</div>
-					<div className="like-button">
-						{setLikeOrDisLike ? (
-							<button onClick={() => fetchLikePost(post._id, dispatch)}>
-								<i className="fa-regular fa-heart"></i> {post?.likes?.likeCount}
-							</button>
-						) : (
-							<button onClick={() => fetchDisLikePost(post._id, dispatch)}>
-								<i className="fa-solid fa-heart"></i>
-								{post?.likes?.likeCount}
 							</button>
 						)}
 					</div>
@@ -142,6 +151,7 @@ export const PostsCard = ({ post, styles, showDate }) => {
 											onClick={() =>
 												followHandler(post.username, state, dispatch)
 											}
+											title="Follow User"
 										>
 											Follow
 										</button>
@@ -150,6 +160,7 @@ export const PostsCard = ({ post, styles, showDate }) => {
 											onClick={() =>
 												unfollowHandler(post.username, state, dispatch)
 											}
+											title="Unfollow User"
 										>
 											Unfollow
 										</button>
@@ -158,10 +169,18 @@ export const PostsCard = ({ post, styles, showDate }) => {
 							) : (
 								<div>
 									<div className="single-option-button ">
-										<button onClick={() => editHandler(post._id)}>Edit</button>
+										<button
+											title="Edit Post"
+											onClick={() => editHandler(post._id)}
+										>
+											Edit
+										</button>
 									</div>
 									<div className="single-option-button delete-button ">
-										<button onClick={() => fetchDeletePost(post._id, dispatch)}>
+										<button
+											title="Delete Post"
+											onClick={() => fetchDeletePost(post._id, dispatch)}
+										>
 											Delete
 										</button>
 									</div>
