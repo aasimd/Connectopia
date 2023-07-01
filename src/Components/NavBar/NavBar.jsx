@@ -15,22 +15,28 @@ const activeButtonStyles = ({ isActive }) =>
 				borderRadius: "10px"
 		  }
 		: { padding: "5px", fontWeight: "200" };
+const activeProfileButtonStyles = ({ isActive }) =>
+	isActive
+		? {
+				padding: "10px",
+				fontWeight: "600",
+				backgroundColor: "#cec5c5",
+				borderRadius: "10px"
+		  }
+		: { padding: "5px", fontWeight: "200" };
+
 export const NavBar = () => {
 	const { state, dispatch } = useContext(PageContext);
 	const navigate = useNavigate();
 	const { profileAvatar, fullName, username } = state?.userInfo;
 	return (
 		<div className="nav-bar-card">
+			<header className="connectopia-name-header">
+				<h1 onClick={() => navigate("/posts")}>
+					<span>Connect</span>opia
+				</h1>
+			</header>
 			<div>
-				<div className="profile-nav-link">
-					<NavLink style={activeButtonStyles} to="/profile">
-						<ProfileImageAndNames
-							profileImage={profileAvatar}
-							fullName={fullName}
-							username={username}
-						/>
-					</NavLink>
-				</div>
 				<div className="nav-bar-links">
 					<NavLink style={activeButtonStyles} to="/posts">
 						{/* <i className="fa-solid fa-house"></i>  */}
@@ -43,6 +49,10 @@ export const NavBar = () => {
 					<NavLink style={activeButtonStyles} to="/bookmarks">
 						{/* <i className="fa-solid fa-bookmark"></i>  */}
 						Bookmarks
+					</NavLink>
+					<NavLink style={activeButtonStyles} to="/profile">
+						{/* <i className="fa-solid fa-bookmark"></i>  */}
+						Profile
 					</NavLink>
 					{/* <NavLink style={activeButtonStyles} to="/liked">
 				Liked Posts
@@ -60,6 +70,15 @@ export const NavBar = () => {
 						Logout
 					</button>
 				</div>
+			</div>
+			<div className="profile-nav-link">
+				<NavLink to="/profile">
+					<ProfileImageAndNames
+						profileImage={profileAvatar}
+						fullName={fullName}
+						username={username}
+					/>
+				</NavLink>
 			</div>
 		</div>
 	);

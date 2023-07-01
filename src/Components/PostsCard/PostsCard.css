@@ -9,12 +9,13 @@ ul {
 }
 .post-card {
 	/* box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.2); */
-	border: 1px solid var(--black-color);
+	border-bottom: 1px solid var(--black-color);
+	border-top: 1px solid var(--black-color);
 }
 .post-card,
 .individual-post {
 	width: 500px;
-	border-radius: 5px;
+	border-radius: 0px;
 	padding: 5px 20px 20px 5px;
 	margin: auto;
 	text-align: left;
@@ -78,4 +79,75 @@ ul {
 .post-card-content-container {
 	padding-left: 50px;
 	margin-top: -10px;
+}
+.options-button {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+}
+.options-button button,
+.close-options-button button {
+	font-size: 1.5rem;
+	color: var(--main-color);
+	border: none;
+	background-color: white;
+	padding: 5px;
+	/* transition: 0.1s; */
+}
+.options-button button:hover {
+	color: white;
+	background-color: var(--main-color);
+	padding: 5px;
+}
+.options-button button:active {
+	background-color: var(--secondary-color);
+}
+
+.options-section {
+	text-align: right;
+	transition: 0.5s;
+}
+.options-container {
+	z-index: 5;
+	box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.3);
+	padding: 10px;
+	background-color: white;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+.single-option-button {
+	text-align: left;
+}
+.single-option-button button {
+	font-size: 1rem;
+	padding: 5px;
+	margin-top: 5px;
+	border-radius: 5px;
+	border: none;
+	background-color: var(--main-color);
+	color: white;
+	font-weight: 600;
+	transition: 0.7s;
+}
+.single-option-button button:hover {
+	background-color: var(--secondary-color);
+}
+.like-and-bookmark-button {
+	padding: 10px 10px 10px 0;
+	display: flex;
+	gap: 1rem;
+}
+.bookmark-button button,
+.like-button button {
+	
+	font-size: 1.2rem;
+	background-color: white;
+	border: none;
+}
+.bookmark-button button{
+	color: green;
+}
+.like-button button{
+	color: var(--main-color);
 }

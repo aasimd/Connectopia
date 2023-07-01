@@ -32,7 +32,7 @@ export const PostsCard = ({ post, styles, showDate }) => {
 		username: post?.username,
 		fullName: post?.fullName
 	});
-
+	const [showOptions, setShowOptions] = useState(false);
 	const setLikeOrDisLike = isNotLiked(post._id, state);
 
 	const editHandler = (id) => {
@@ -94,66 +94,86 @@ export const PostsCard = ({ post, styles, showDate }) => {
 						/>
 					)}
 				</div>
-				<div>
-					{!findBookmarkedPost ? (
-						<button
-							onClick={() => {
-								fetchBookmarkPost(post._id, dispatch);
-							}}
-						>
-							<i className="fa-sharp fa-regular fa-bookmark"></i>
-						</button>
-					) : (
-						<button
-							onClick={() => {
-								fetchRemoveBookmarkPost(post._id, dispatch);
-							}}
-						>
-							<i className="fa-sharp fa-solid fa-bookmark"></i>
-						</button>
-					)}
+				<div className="like-and-bookmark-button">
+					<div className="bookmark-button">
+						{!findBookmarkedPost ? (
+							<button
+								onClick={() => {
+									fetchBookmarkPost(post._id, dispatch);
+								}}
+							>
+								<i className="fa-sharp fa-regular fa-bookmark"></i>
+							</button>
+						) : (
+							<button
+								onClick={() => {
+									fetchRemoveBookmarkPost(post._id, dispatch);
+								}}
+							>
+								<i className="fa-sharp fa-solid fa-bookmark"></i>
+							</button>
+						)}
+					</div>
+					<div className="like-button">
+						{setLikeOrDisLike ? (
+							<button onClick={() => fetchLikePost(post._id, dispatch)}>
+								<i className="fa-regular fa-heart"></i> {post?.likes?.likeCount}
+							</button>
+						) : (
+							<button onClick={() => fetchDisLikePost(post._id, dispatch)}>
+								<i className="fa-solid fa-heart"></i>
+								{post?.likes?.likeCount}
+							</button>
+						)}
+					</div>
 				</div>
-				<div>
-					{setLikeOrDisLike ? (
-						<button onClick={() => fetchLikePost(post._id, dispatch)}>
-							<i className="fa-regular fa-heart"></i> {post?.likes?.likeCount}
-						</button>
-					) : (
-						<button onClick={() => fetchDisLikePost(post._id, dispatch)}>
-							<i className="fa-solid fa-heart"></i>
-							{post?.likes?.likeCount}
-						</button>
-					)}
-				</div>
-				<div>
-					{state.userInfo.username !== post.username && (
-						<div>
-							{!followUserHandler(post.username, state) ? (
-								<button
-									onClick={() => followHandler(post.username, state, dispatch)}
-								>
-									Follow
+				<div className="options-section">
+					{showOptions ? (
+						<div className="options-container">
+							<div className="close-options-button">
+								<button onClick={() => setShowOptions(false)}>
+									<i className="fa-solid fa-xmark"></i>
 								</button>
+							</div>
+							{state.userInfo?.username !== post.username ? (
+								<div className="single-option-button ">
+									{!followUserHandler(post.username, state) ? (
+										<button
+											onClick={() =>
+												followHandler(post.username, state, dispatch)
+											}
+										>
+											Follow
+										</button>
+									) : (
+										<button
+											onClick={() =>
+												unfollowHandler(post.username, state, dispatch)
+											}
+										>
+											Unfollow
+										</button>
+									)}
+								</div>
 							) : (
-								<button
-									onClick={() =>
-										unfollowHandler(post.username, state, dispatch)
-									}
-								>
-									Unfollow
-								</button>
+								<div>
+									<div className="single-option-button ">
+										<button onClick={() => editHandler(post._id)}>Edit</button>
+									</div>
+									<div className="single-option-button delete-button ">
+										<button onClick={() => fetchDeletePost(post._id, dispatch)}>
+											Delete
+										</button>
+									</div>
+								</div>
 							)}
 						</div>
-					)}
-				</div>
-				<div>
-					{state.userInfo?.username === post.username && (
-						<>
-							<button onClick={() => editHandler(post._id)}>Edit</button>
-							<button onClick={() => fetchDeletePost(post._id, dispatch)}>
-								Delete
+					) : (
+						<div className="options-button">
+							<button onClick={() => setShowOptions(true)}>
+								<i className="fa-solid fa-ellipsis"></i>
 							</button>
-						</>
+						</div>
 					)}
 				</div>
 			</div>

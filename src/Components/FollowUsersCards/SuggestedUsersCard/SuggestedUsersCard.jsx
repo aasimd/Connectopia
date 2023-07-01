@@ -33,12 +33,12 @@ export const SuggestedUsersCard = () => {
 					?.includes(searchInput?.toLowerCase()?.trim())
 		)
 	];
-	
+
 	return (
 		<div className="suggested-users-card">
 			<div className="search-users-section">
 				<div>
-					<label>Search Users:</label>
+					<b>Search Users:</b>
 					<br />
 					<input
 						type="search"
@@ -62,7 +62,7 @@ export const SuggestedUsersCard = () => {
 											/>
 										</div>
 										{/* //make follow button disable for userInfo.user */}
-										<div>
+										<div className="follow-btn">
 											{state?.userInfo?.username !== user?.username &&
 												(!followUserHandler(user.username, state) ? (
 													<button
@@ -89,24 +89,34 @@ export const SuggestedUsersCard = () => {
 					)}
 				</div>
 			</div>
-			<div>
+			<div className="suggested-users-section">
 				{suggestedUsers.length > 0 && (
-					<>
-						<b>Suggested Users</b>
-						{suggestedUsers.map((user) => (
-							<li key={user?._id}>
-								<ProfileImageAndNames
-									fullName={user?.fullName}
-									username={user?.username}
-									profileImage={user?.profileAvatar}
-									showDate={false}
-								/>
-								<button onClick={() => followUserHandler(user.username, state)}>
-									Follow
-								</button>
-							</li>
-						))}
-					</>
+					<div>
+						<b>Suggested Users:</b>
+						<ul>
+							{suggestedUsers.map((user) => (
+								<li key={user?._id}>
+									<div>
+										<ProfileImageAndNames
+											fullName={user?.fullName}
+											username={user?.username}
+											profileImage={user?.profileAvatar}
+											showDate={false}
+										/>
+									</div>
+									<div className="follow-btn">
+										<button
+											onClick={() =>
+												followHandler(user?.username, state, dispatch)
+											}
+										>
+											Follow
+										</button>
+									</div>
+								</li>
+							))}
+						</ul>
+					</div>
 				)}
 			</div>
 		</div>

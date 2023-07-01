@@ -12,8 +12,8 @@
 	flex-direction: column;
 	padding: 10px;
 	position: relative;
-	width: 70%;
-    float: right;
+	width: 65%;
+	float: right;
 }
 .logout-btn {
 	padding: 10px;
@@ -46,4 +46,14 @@
 	background-color: var(--medium-gray-color);
 	color: white;
 	border-radius: 10px;
+}
+.connectopia-name-header {
+	cursor: pointer;
+	/* font-size: 2rem; */
+}
+.profile-nav-link {
+	margin-right: -50px;
+	width: 90%;
+	position: relative;
+	top: 150px;
 }
