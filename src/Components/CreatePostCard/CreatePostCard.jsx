@@ -79,16 +79,20 @@ export const CreatePostCard = () => {
 					</>
 				) : (
 					<div className="upload-image-container">
-						<button onClick={() => deleteImageHandler()}>Delete Image</button>
+						<div className="delete-button-for-create-post">
+							<button onClick={() => deleteImageHandler()}>
+								<i className="fa-sharp fa-solid fa-circle-xmark"></i>
+							</button>
+						</div>
 						<img src={newPost?.postImage} alt="preview-image" />
 					</div>
 				)}
 			</div>
 			<div>
 				{changed && (
-					<div>
-						<button onClick={() => savePostHandler()}>Save</button>
+					<div className="save-discard-buttons">
 						<button onClick={() => discardPostHandler()}>Discard</button>
+						<button onClick={() => savePostHandler()}>Save</button>
 					</div>
 				)}
 			</div>

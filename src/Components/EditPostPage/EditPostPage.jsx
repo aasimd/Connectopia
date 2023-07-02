@@ -6,6 +6,8 @@ import { PageContext } from "../../Contexts/PageContext";
 import { fetchEditPost } from "../../FetchFunctions/fetchFunctions";
 import { useNavigate, useParams } from "react-router";
 import { ProfileImageAndNames } from "../ProfileImageAndNames/ProfileImageAndNames";
+import { NavBar } from "../NavBar/NavBar";
+import { SuggestedUsersCard } from "../FollowUsersCards/SuggestedUsersCard/SuggestedUsersCard";
 
 export const EditPostPage = ({ post }) => {
 	const { state, dispatch } = useContext(PageContext);
@@ -35,43 +37,57 @@ export const EditPostPage = ({ post }) => {
 		setTempPost((p) => ({ ...p, postImage: image }));
 	};
 	return (
-		<div>
-			<div className="edit-post-card">
-				<div>
-					<ProfileImageAndNames
-						fullName={post.fullName}
-						username={post.username}
-						profileImage={post.profileAvatar}
-					/>
-				</div>
-				<div>
-					<textarea
-						onChange={(e) =>
-							setTempPost(() => ({ ...tempPost, content: e.target.value }))
-						}
-						placeholder="type something..."
-						value={tempPost.content}
-					/>
+		<div className="three-sections-page">
+			<nav className="left-column">
+				<NavBar />
+			</nav>
+			<div className="middle-column">
+				<div className="edit-post-card posts-container">
+					<div className="back-button-section">
+						<button onClick={() => navigate("/posts")}>
+							<i className="fa-solid fa-arrow-left"></i>
+						</button>{" "}
+						Edit Post
+					</div>
 					<div>
-						{tempPost.postImage !== "" ? (
-							<div className="edit-image-container">
-								<button onClick={() => deletePostImageHandler()}>
-									delete image
-								</button>
-								<img alt={"uploaded-image"} src={tempPost.postImage} />
-							</div>
-						) : (
-							<input
-								type="file"
-								onChange={(event) => uploadImageHandler(event)}
-							/>
-						)}
+						<ProfileImageAndNames
+							fullName={post.fullName}
+							username={post.username}
+							profileImage={post.profileAvatar}
+						/>
+					</div>
+					<div>
+						<textarea
+							onChange={(e) =>
+								setTempPost(() => ({ ...tempPost, content: e.target.value }))
+							}
+							placeholder="type something..."
+							value={tempPost.content}
+						/>
+						<div>
+							{tempPost.postImage !== "" ? (
+								<div className="edit-image-container">
+									<button onClick={() => deletePostImageHandler()}>
+										delete image
+									</button>
+									<img alt={"uploaded-image"} src={tempPost.postImage} />
+								</div>
+							) : (
+								<input
+									type="file"
+									onChange={(event) => uploadImageHandler(event)}
+								/>
+							)}
+						</div>
+					</div>
+					<div>
+						<button onClick={() => discardChangeHandler()}>Discard</button>
+						<button onClick={() => saveChangeHandler()}>Save</button>
 					</div>
 				</div>
-				<div>
-					<button onClick={() => discardChangeHandler()}>Discard</button>
-					<button onClick={() => saveChangeHandler()}>Save</button>
-				</div>
+			</div>
+			<div>
+				<SuggestedUsersCard className="right-column" />
 			</div>
 		</div>
 	);

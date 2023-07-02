@@ -22,3 +22,48 @@
 .create-new-post-card .upload-image-container img {
 	width: 100%;
 }
+.upload-image-container {
+	position: relative;
+}
+.delete-button-for-create-post {
+	position: absolute;
+	right: -10px;
+	top: -10px;
+}
+.delete-button-for-create-post button {
+	font-size: 2rem;
+	border: none;
+	background-color: inherit;
+	color: red;
+}
+.delete-button-for-create-post button:hover {
+	color: var(--gray-color);
+}
+.save-discard-buttons {
+	text-align: right;
+	padding-top: 10px;
+}
+.save-discard-buttons button:nth-of-type(1) {
+	font-size: 1rem;
+	margin-right: 20px;
+	padding: 5px;
+	border-radius: 5px;
+	border: 1px solid var(--main-color);
+	color: var(--main-color);
+	background-color: inherit;
+}
+.save-discard-buttons button:nth-of-type(1):hover {
+	color: var(--secondary-color);
+	border: 1px solid var(--secondary-color);
+}
+.save-discard-buttons button:nth-of-type(2) {
+	font-size: 1rem;
+	padding: 5px;
+	border-radius: 5px;
+	border: none;
+	background-color: var(--main-color);
+	color: white;
+}
+.save-discard-buttons button:nth-of-type(2):hover {
+	background-color: var(--secondary-color);
+}

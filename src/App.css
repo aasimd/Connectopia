@@ -69,6 +69,7 @@
 }
 .posts-container {
 	height: 100vh;
+	/* padding: 20px; */
 }
 .right-column {
 	/* /* flex: 1; */

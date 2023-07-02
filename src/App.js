@@ -15,7 +15,7 @@ import { EditPostPage } from "./Components/EditPostPage/EditPostPage";
 import { IndividualPostPage } from "./pages/IndividualPostPage/IndividualPostPage";
 import { UserProfilePage } from "./pages/UserProfilePage/UserProfilePage";
 import { SetupAccountPage } from "./pages/SetupAccountPage/SetupAccountPage";
-
+import { RequiresAuth } from "./Components/RequiresAuth/RequiresAuth";
 function App() {
 	const { state, dispatch } = useContext(PageContext);
 
@@ -24,17 +24,70 @@ function App() {
 			<Routes>
 				<Route path="/" element={<LoginPage />} />
 				<Route path="/mockman" element={<Mockman />} />
-				<Route path="/posts" element={<PostsListingPage />} />
-				<Route path="/bookmarks" element={<BookmarksPage />} />
-				<Route path="/explore" element={<ExplorePage />} />
-				<Route path="/profile" element={<ProfilePage />} />
+				<Route
+					path="/posts"
+					element={
+						<RequiresAuth>
+							<PostsListingPage />
+						</RequiresAuth>
+					}
+				/>
+				<Route
+					path="/bookmarks"
+					element={
+						<RequiresAuth>
+							<BookmarksPage />
+						</RequiresAuth>
+					}
+				/>
+				<Route
+					path="/explore"
+					element={
+						<RequiresAuth>
+							<ExplorePage />
+						</RequiresAuth>
+					}
+				/>
+				<Route
+					path="/profile"
+					element={
+						<RequiresAuth>
+							<ProfilePage />
+						</RequiresAuth>
+					}
+				/>
 				<Route
 					path="/postEdit"
-					element={<EditPostPage post={state.selectPostEdit} />}
+					element={
+						<RequiresAuth>
+							<EditPostPage post={state.selectPostEdit} />
+						</RequiresAuth>
+					}
 				/>
-				<Route path="/posts/:postId" element={<IndividualPostPage />} />
-				<Route path="/users/:userId" element={<UserProfilePage />} />
-				<Route path="/setupaccount" element={<SetupAccountPage />} />
+				<Route
+					path="/posts/:postId"
+					element={
+						<RequiresAuth>
+							<IndividualPostPage />
+						</RequiresAuth>
+					}
+				/>
+				<Route
+					path="/users/:userId"
+					element={
+						<RequiresAuth>
+							<UserProfilePage />
+						</RequiresAuth>
+					}
+				/>
+				<Route
+					path="/setupaccount"
+					element={
+						<RequiresAuth>
+							<SetupAccountPage />
+						</RequiresAuth>
+					}
+				/>
 			</Routes>
 		</div>
 	);
