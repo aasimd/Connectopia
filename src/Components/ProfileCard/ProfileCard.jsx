@@ -7,6 +7,11 @@ import { fetchPostsData } from "../../FetchFunctions/fetchFunctions";
 import { EditProfileCard } from "../EditProfileCard/EditProfileCard";
 import "./ProfileCard.css";
 import { useNavigate } from "react-router";
+import {
+	followHandler,
+	followUserHandler,
+	unfollowHandler
+} from "../../Functions/followUserHandler";
 export const ProfileCard = ({ userProfile }) => {
 	const {
 		username,
@@ -57,10 +62,29 @@ export const ProfileCard = ({ userProfile }) => {
 							</a>
 						</div>
 						<div className="edit-profile-button">
-							{state.userInfo?.username === username && (
+							{state.userInfo?.username === username ? (
 								<button onClick={() => navigate("/setupaccount")}>
 									Edit Profile
 								</button>
+							) : (
+								<div className="follow-btn">
+									{state?.userInfo?.username !== username &&
+										(!followUserHandler(username, state) ? (
+											<button
+												onClick={() => followHandler(username, state, dispatch)}
+											>
+												Follow
+											</button>
+										) : (
+											<button
+												onClick={() =>
+													unfollowHandler(username, state, dispatch)
+												}
+											>
+												Unfollow
+											</button>
+										))}
+								</div>
 							)}
 						</div>
 					</div>

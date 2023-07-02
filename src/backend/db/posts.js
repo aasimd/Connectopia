@@ -51,7 +51,7 @@ export const posts = [
 			"https://assets-prd.ignimgs.com/2022/03/17/whythemcusmoonknightisverydifferentfromthecomics36190303moonknightthumb-1642630606707-1647532268585.jpg",
 		postImage:
 			"https://t4.ftcdn.net/jpg/01/04/78/75/240_F_104787586_63vz1PkylLEfSfZ08dqTnqJqlqdq0eXx.jpg",
-		createdAt: "2022-05-01",
+		createdAt: "2023-05-01",
 		updatedAt: formatDate(),
 		comments: [
 			{
@@ -117,7 +117,7 @@ export const posts = [
 			"https://m.economictimes.com/thumb/height-450,width-600,imgsize-31396,msid-89912757/the-batman-review.jpg",
 		fullName: "Aasim Dongarkar",
 		username: "aasimd01",
-		createdAt: "2022-05-11",
+		createdAt: "2023-05-11",
 		postImage:
 			"https://w.forfun.com/fetch/71/71bbad60684ccd1ac7313016a82a0e0a.jpeg",
 		updatedAt: formatDate(),
@@ -210,7 +210,7 @@ export const posts = [
 				}
 			}
 		],
-		createdAt: "2022-04-20",
+		createdAt: "2023-04-20",
 		updatedAt: formatDate()
 	},
 	{
@@ -255,7 +255,7 @@ export const posts = [
 		username: "faizzz01",
 		profileAvatar:
 			"https://englishtribuneimages.blob.core.windows.net/gallary-content/2022/11/2022_11$largeimg_592641370.jpg",
-		createdAt: "2022-05-05",
+		createdAt: "2023-05-05",
 		updatedAt: formatDate(),
 		comments: [
 			{
@@ -301,7 +301,7 @@ export const posts = [
 		postImage: null,
 		username: "johndoe",
 		fullName: "John Doe",
-		createdAt: "2022-05-11",
+		createdAt: "2023-05-11",
 		profileAvatar: "https://picsum.photos/70/70",
 		updatedAt: formatDate(),
 		comments: [
@@ -374,7 +374,7 @@ export const posts = [
 		},
 		username: "johndoe",
 		fullName: "John Doe",
-		createdAt: "2022-05-09",
+		createdAt: "2023-05-09",
 		profileAvatar: "https://picsum.photos/70/70",
 		postImage:
 			"https://res.cloudinary.com/dwebygldw/image/upload/v1653066477/frittr/E-HqxXdWUAM0z-U_a44utb.jpg",
@@ -432,7 +432,7 @@ export const posts = [
 		profileAvatar: "https://picsum.photos/70/70",
 		postImage:
 			"https://res.cloudinary.com/dwebygldw/image/upload/v1653067279/frittr/E7OX3WgXoAEu0gR_z9x7zu.jpg",
-		createdAt: "2022-05-01",
+		createdAt: "2023-05-01",
 		updatedAt: formatDate(),
 		comments: [
 			{
@@ -493,7 +493,7 @@ export const posts = [
 		profileAvatar:
 			"https://assets-prd.ignimgs.com/2022/03/17/whythemcusmoonknightisverydifferentfromthecomics36190303moonknightthumb-1642630606707-1647532268585.jpg",
 		postImage: "https://pbs.twimg.com/media/Exf99x_W8AcgDEv.jpg:large",
-		createdAt: "2022-05-01",
+		createdAt: "2023-06-01",
 		updatedAt: formatDate(),
 		comments: [
 			{

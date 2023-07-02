@@ -8,6 +8,7 @@ export const SortButtonsCard = () => {
 	const [showSortOptions, setShowSortOptions] = useState(false);
 	const selectOptionHandler = (event) => {
 		dispatch({ type: "setSortType", payload: event.target.value });
+		setShowSortOptions(false);
 	};
 	return (
 		<div className="sort-options-section">

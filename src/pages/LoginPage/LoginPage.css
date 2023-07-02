@@ -14,6 +14,10 @@
 html {
 	scroll-snap-type: y mandatory;
 }
+.loader-component{
+	position: absolute;
+	margin: auto;
+}
 .intro-card,
 .login-signup-card {
 	scroll-snap-align: start;

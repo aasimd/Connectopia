@@ -65,7 +65,8 @@ export const PageContextProvider = ({ children }) => {
 		selectPostEdit: {},
 		selectedPost: {},
 		selectedUserProfile: {},
-		sortType: "latest"
+		sortType: "latest",
+		isLoading: true
 	});
 	const trendingData = [...state.postsData].filter((post) =>
 		state?.sortType === "trending" ? post.likes.likeCount > 0 : post

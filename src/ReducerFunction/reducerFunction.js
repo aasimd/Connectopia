@@ -22,6 +22,8 @@ export const reducerFunction = (state, { type, payload }) => {
 			return { ...state, selectedUserProfile: payload };
 		case "setSortType":
 			return { ...state, sortType: payload };
+		case "changeIsLoading":
+			return { ...state, isLoading: payload };
 		default:
 			return state;
 	}

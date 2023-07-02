@@ -26,6 +26,7 @@ export const SignupCard = ({ setPageState }) => {
 			password: newUserInfo?.password,
 			username: newUserInfo?.username
 		});
+		dispatch({ type: "setLogin", payload: true });
 		setTimeout(() => {
 			navigate("/setupaccount");
 		}, 1000);
