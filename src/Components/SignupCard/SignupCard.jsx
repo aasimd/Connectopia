@@ -8,28 +8,38 @@ import "./SignupCard.css";
 import { backUpProfileAvatar } from "../../pages/SetupAccountPage/SetupAccountPage";
 export const SignupCard = ({ setPageState }) => {
 	const { state, dispatch } = useContext(PageContext);
+	const [signUpError, setSignUpError] = useState(false);
+	const [showUserAlreadyExistsError, setShowUserAlreadyExistsError] =
+		useState(false);
 	const [showPassword, setShowPassword] = useState(false);
 	const [newUserInfo, setNewUserInfo] = useState({
 		firstName: "",
 		lastName: "",
 		password: "",
+		confirmPassword: "",
 		username: "",
 		bio: "",
 		website: "",
 		profileAvatar: backUpProfileAvatar
 	});
 	const navigate = useNavigate();
-	const formSubmitHandler = (event) => {
+	const formSubmitHandler = async (event) => {
 		event.preventDefault();
-		fetchSignUpUser(state, dispatch, {
-			fullName: `${newUserInfo?.firstName} ${newUserInfo?.lastName}`,
-			password: newUserInfo?.password,
-			username: newUserInfo?.username
-		});
-		dispatch({ type: "setLogin", payload: true });
-		setTimeout(() => {
-			navigate("/setupaccount");
-		}, 1000);
+		if (newUserInfo?.confirmPassword === newUserInfo?.password) {
+			const response = await fetchSignUpUser(state, dispatch, {
+				fullName: `${newUserInfo?.firstName} ${newUserInfo?.lastName}`,
+				password: newUserInfo?.password,
+				username: newUserInfo?.username
+			});
+			if (response) {
+				dispatch({ type: "setLogin", payload: true });
+				navigate("/setupaccount");
+			} else {
+				setShowUserAlreadyExistsError(() => true);
+			}
+		} else {
+			setSignUpError(() => true);
+		}
 	};
 	return (
 		<div className="signup-card">
@@ -60,6 +70,11 @@ export const SignupCard = ({ setPageState }) => {
 				</div>
 				<div>
 					<label>Username: </label>
+					{showUserAlreadyExistsError && (
+						<b className="login-error-message">
+							<i className="fa-solid fa-xmark"></i> Username Already Exists
+						</b>
+					)}
 					{"  "}
 					<input
 						type="text"
@@ -91,6 +106,22 @@ export const SignupCard = ({ setPageState }) => {
 					/>
 				</div>
 				<div>
+					<label>Confirm Password:</label>
+					<input
+						type={"text"}
+						name="password"
+						required
+						value={newUserInfo?.confirmPassword}
+						onChange={(event) =>
+							setNewUserInfo((p) => ({
+								...p,
+								confirmPassword: event.target.value
+							}))
+						}
+						style={{ color: "#ff3b30", fontStyle: "italic" }}
+					/>
+				</div>
+				<div>
 					<label>
 						<input
 							type="checkbox"
@@ -99,6 +130,11 @@ export const SignupCard = ({ setPageState }) => {
 						/>
 						Show Password
 					</label>
+					{signUpError && (
+						<b className="login-error-message">
+							<i className="fa-solid fa-xmark"></i> Passwords Don't Match
+						</b>
+					)}
 				</div>
 				<div>
 					<input type="submit" value="Submit" />

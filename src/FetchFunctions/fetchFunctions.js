@@ -2,7 +2,7 @@
 
 import React from "react";
 
-export const fetchPostsData = async (dispatch) => {
+export const fetchPostsData = async (state, dispatch) => {
 	try {
 		const response = await fetch("/api/posts", {
 			method: "GET"
@@ -15,14 +15,44 @@ export const fetchPostsData = async (dispatch) => {
 };
 
 export const fetchLoginUser = async (state, dispatch, loginData) => {
+	console.log(dispatch);
 	try {
 		const response = await fetch(`/api/auth/login`, {
 			method: "POST",
 			body: JSON.stringify(loginData)
 		});
 		const { foundUser, encodedToken } = await response.json();
-		dispatch({ type: "setUserInfo", payload: foundUser });
 		localStorage.setItem("encodedToken", encodedToken);
+		dispatch({ type: "setLogin", payload: true });
+		dispatch({ type: "setUserInfo", payload: foundUser });
+		if (encodedToken === undefined) {
+			console.error("Wrong username or password entered");
+			// dispatch({
+			// 	type: "setLoginError",
+			// 	payload: "Wrong Email ID or Password entered"
+			// });
+			return false;
+		} else {
+			dispatch({ type: "setLogin", payload: true });
+			return true;
+			// dispatch({
+			// 	type: "setLoginError",
+			// 	payload: ""
+			// });
+			// toast.success("Logged in!", {
+			// 	position: "top-right",
+			// 	autoClose: 3000,
+			// 	hideProgressBar: false,
+			// 	closeOnClick: true,
+			// 	pauseOnHover: true,
+			// 	draggable: true,
+			// 	progress: undefined,
+			// 	theme: "light"
+			// });
+			// setTimeout(() => {
+			// 	navigate(location?.state?.from?.pathname);
+			// }, 1000);
+		}
 	} catch (e) {
 		console.error(e.message);
 	}
@@ -34,9 +64,16 @@ export const fetchSignUpUser = async (state, dispatch, userData) => {
 			method: "POST",
 			body: JSON.stringify(userData)
 		});
+
 		const data = await response.json();
-		dispatch({ type: "setUserInfo", payload: data.createdUser });
-		localStorage.setItem("encodedToken", data.encodedToken);
+		if (data?.encodedToken === undefined) {
+			console.error("User Already Exists");
+			return false;
+		} else {
+			dispatch({ type: "setUserInfo", payload: data.createdUser });
+			localStorage.setItem("encodedToken", data.encodedToken);
+			return true;
+		}
 	} catch (e) {
 		console.error(e.message);
 	}

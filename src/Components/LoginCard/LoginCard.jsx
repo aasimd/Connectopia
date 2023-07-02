@@ -11,6 +11,7 @@ import "./LoginCard.css";
 export const LoginCard = ({ setPageState }) => {
 	const { state, dispatch } = useContext(PageContext);
 	const [showPassword, setShowPassword] = useState(false);
+	const [showLoginError, setShowLoginError] = useState(false);
 	const [loginData, setLoginData] = useState({
 		username: "",
 		password: ""
@@ -18,16 +19,16 @@ export const LoginCard = ({ setPageState }) => {
 	const navigate = useNavigate();
 	const userNameHandler = (event) => {
 		setLoginData((prev) => ({ ...prev, username: event.target.value }));
+		setShowLoginError(() => false);
 	};
 	const passwordHandler = (event) => {
 		setLoginData((prev) => ({ ...prev, password: event.target.value }));
+		setShowLoginError(() => false);
 	};
-	const submitHandler = (e) => {
+	const submitHandler = async (e) => {
 		e.preventDefault();
-		fetchLoginUser(state, dispatch, loginData);
-		dispatch({ type: "setLogin", payload: true });
-		fetchPostsData(state, dispatch);
-		navigate("/posts");
+		const response = await fetchLoginUser(state, dispatch, loginData);
+		response ? navigate("/posts") : setShowLoginError(() => true);
 	};
 	const useGuestCredsHandler = () => {
 		setLoginData((prev) => ({
@@ -61,6 +62,7 @@ export const LoginCard = ({ setPageState }) => {
 						style={{ color: "#ff3b30", fontStyle: "italic" }}
 					/>
 				</div>
+
 				<div>
 					<label>
 						<input
@@ -70,7 +72,12 @@ export const LoginCard = ({ setPageState }) => {
 						/>
 						Show Password
 					</label>
-				</div>
+				</div><br/>
+				{showLoginError && (
+					<b className="login-error-message">
+						<i className="fa-solid fa-xmark"></i> Wrong username or password entered
+					</b>
+				)}
 				<div>
 					<input type="submit" value="Submit" />
 				</div>

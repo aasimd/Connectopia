@@ -16,6 +16,7 @@ import { SuggestedUsersCard } from "../../Components/FollowUsersCards/SuggestedU
 import "./PostsListingPage.css";
 import "../../App.css";
 import { SortButtonsCard } from "../../Components/SortButtonsCard/SortButtonsCard";
+import { ProgressBar } from "react-loader-spinner";
 export const PostsListingPage = () => {
 	const {
 		state,
@@ -25,51 +26,74 @@ export const PostsListingPage = () => {
 		suggestedUsers,
 		followingUsers
 	} = useContext(PageContext);
-
 	useEffect(() => {
-		fetchPostsData(dispatch, state);
+		dispatch({ type: "changeIsLoading", payload: true });
+		setTimeout(() => {
+			dispatch({ type: "changeIsLoading", payload: false });
+		}, 500);
+	}, []);
+	useEffect(() => {
+		fetchPostsData(state, dispatch);
 		fetchUsersList(dispatch);
 		fetchGetBookmarks(dispatch);
 	}, [DisplayData, state.bookmarkedPosts, state.postsData]);
 
 	return (
-		<div className="home-page">
-			<div className="three-sections-page">
-				<nav className="left-column">
-					<NavBar />
-				</nav>
-				<div className="middle-column">
-					<div className="posts-container">
-						<h1 className="page-heading-name ">Home</h1>
-						<div>
-							<CreatePostCard />
-						</div>
-						<div>
-							<SortButtonsCard />
-						</div>
-						<div>
-							{FollowingUsersPost().length > 0 ? (
-								<ul>
-									{[...FollowingUsersPost()].map((post) => (
-										<li key={post.id}>
+		<div>
+			{state?.isLoading && (
+				<div
+					className={
+						state.isLoading ? "loader-spinner" : "loader-spinner-hidden"
+					}
+				>
+					<ProgressBar
+						height="100px"
+						width="400px"
+						ariaLabel="progress-bar-loading"
+						wrapperStyle={{}}
+						wrapperClass="progress-bar-wrapper"
+						borderColor="#F4442E"
+						barColor="#51E5FF"
+					/>
+				</div>
+			)}
+			<div className="home-page">
+				<div className="three-sections-page">
+					<nav className="left-column">
+						<NavBar />
+					</nav>
+					<div className="middle-column">
+						<div className="posts-container">
+							<h1 className="page-heading-name ">Home</h1>
+							<div>
+								<CreatePostCard />
+							</div>
+							<div>
+								<SortButtonsCard />
+							</div>
+							<div>
+								{FollowingUsersPost().length > 0 ? (
+									<ul>
+										{[...FollowingUsersPost()].map((post) => (
 											<PostsCard
+												key={post.id}
 												post={post}
 												styles={"post-card"}
 												showDate={true}
 											/>
-										</li>
-									))}
-								</ul>
-							) : (
-								<div className="empty-bookmarks-text">
-									<h2>No posts to show.</h2>
-								</div>
-							)}
+										))}
+									</ul>
+								) : (
+									<div className="empty-bookmarks-text">
+										<h2>No posts to show.</h2>
+									</div>
+								)}
+							</div>
 						</div>
 					</div>
-				</div>
-				<div>
-					<SuggestedUsersCard className="right-column" />
+					<div>
+						<SuggestedUsersCard className="right-column" />
+					</div>
 				</div>
 			</div>
 		</div>

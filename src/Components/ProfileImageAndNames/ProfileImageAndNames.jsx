@@ -18,12 +18,14 @@ export const ProfileImageAndNames = ({
 	const navigate = useNavigate();
 	const userProfileClickHandler = (username) => {
 		if (username === state.userInfo?.username) {
+			dispatch({ type: "changeIsLoading", payload: true });
 			setTimeout(() => {
 				navigate(`/profile`);
 			}, 1000);
 		} else {
 			const userId = state.usersData.find((user) => user.username === username);
 			fetchSelectedUserProfile(userId._id, dispatch);
+			dispatch({ type: "changeIsLoading", payload: true });
 			setTimeout(() => {
 				navigate(`/users/${userId._id}`);
 			}, 1000);

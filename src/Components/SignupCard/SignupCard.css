@@ -21,7 +21,7 @@ button {
 	font-size: 2rem;
 	font-weight: 700;
 	margin-top: 0%;
-    margin-bottom: 2%;
+	margin-bottom: 2%;
 }
 .signup-card form label {
 	color: var(--black-color);
@@ -60,16 +60,16 @@ button {
 @media screen and (min-width: 650px) {
 	.signup-card {
 		padding: 1rem;
-		margin-top: -2rem;
+		margin-top: -4rem;
 		/* text-align: left; */
 	}
 	.signup-card form {
 		text-align: left;
-		padding: 0rem 0.5rem 2rem 0.5rem;
+		padding: 0rem 0.5rem;
 	}
 	.signup-card h1 {
 		color: var(--main-color);
-		font-size: 2.5rem;
+		font-size: 2.2rem;
 		font-weight: 700;
 	}
 	.signup-card form label {
@@ -117,7 +117,7 @@ button {
 	}
 	.signup-card h1 {
 		color: var(--main-color);
-		font-size: 2.5rem;
+		font-size: 2.2rem;
 		font-weight: 700;
 	}
 	.signup-card form label {

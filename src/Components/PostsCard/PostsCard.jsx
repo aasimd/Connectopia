@@ -52,6 +52,7 @@ export const PostsCard = ({ post, styles, showDate }) => {
 
 	const postClickHandler = (id) => {
 		fetchSelectedPost(id, dispatch, state);
+		dispatch({ type: "changeIsLoading", payload: true });
 		setTimeout(() => {
 			navigate(`/posts/${id}`);
 		}, 1000);

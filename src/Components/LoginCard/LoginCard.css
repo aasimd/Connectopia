@@ -16,8 +16,17 @@
 	font-size: 1.2rem;
 	font-weight: 500;
 }
-.login-card form  input[type="text"],
-.login-card form  input[type="password"] {
+.login-error-message {
+	transition: 2s;
+	margin: 10px;
+	font-size: 1.2rem;
+	padding: 5px 10px;
+	color: white;
+	background-color: var(--main-color);
+	border-radius: 10px;
+}
+.login-card form input[type="text"],
+.login-card form input[type="password"] {
 	width: 70%;
 	margin: 10px;
 	padding: 10px;
@@ -62,7 +71,7 @@
 	}
 	.login-card h1 {
 		color: var(--main-color);
-		font-size: 2.5rem;
+		font-size: 2.2rem;
 		font-weight: 700;
 	}
 	.login-card form label {
@@ -70,8 +79,8 @@
 		font-size: 1.5rem;
 		font-weight: 500;
 	}
-	.login-card form  input[type="text"],
-	.login-card form  input[type="password"] {
+	.login-card form input[type="text"],
+	.login-card form input[type="password"] {
 		width: 70%;
 		margin: 10px;
 		padding: 10px;
