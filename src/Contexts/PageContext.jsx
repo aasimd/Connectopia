@@ -65,9 +65,12 @@ export const PageContextProvider = ({ children }) => {
 		selectPostEdit: {},
 		selectedPost: {},
 		selectedUserProfile: {},
-		sortType: "trending"
+		sortType: "latest"
 	});
-	const DisplayData = [...state.postsData].sort((a, b) => {
+	const trendingData = [...state.postsData].filter((post) =>
+		state?.sortType === "trending" ? post.likes.likeCount > 0 : post
+	);
+	const DisplayData = [...trendingData].sort((a, b) => {
 		if (state?.sortType === "trending") {
 			return b.likes.likeCount - a.likes.likeCount;
 		}
@@ -79,6 +82,7 @@ export const PageContextProvider = ({ children }) => {
 		}
 		return a - b;
 	});
+
 	const FollowingUsersPost = () => {
 		const followingUsers =
 			state.userInfo?.following !== undefined

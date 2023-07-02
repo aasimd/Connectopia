@@ -37,7 +37,9 @@ export const ExplorePage = () => {
 							))}
 						</ul>
 					) : (
-						<h1>No posts to show</h1>
+						<div className="empty-bookmarks-text">
+									<h2>No posts to show.</h2>
+								</div>
 					)}
 				</div>
 			</div>

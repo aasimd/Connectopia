@@ -45,18 +45,21 @@
 	}
 }
 .three-sections-page {
-	/* display: grid;
-	grid-template-columns:  300px 1fr 300px; */
-	display: flex;
-	/* flex-direction: row; */
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-areas: "left middle right";
+	/* display: flex;
+	flex-direction: row; */
 }
 .left-column {
+	grid-area: left;
 	/* flex: 1;
 	background-color: lightgray;
 	padding: 10px; */
 	background-color: var(--light-gray-color);
 }
 .middle-column {
+	grid-area: middle;
 	/* flex: 2;
 	background-color: lightblue;*/
 	/* padding: 10px;  */
@@ -72,6 +75,7 @@
 	/* padding: 20px; */
 }
 .right-column {
+	grid-area: right;
 	/* /* flex: 1; */
 	background-color: var(--light-gray-color);
 	padding: 10px;

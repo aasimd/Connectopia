@@ -25,8 +25,6 @@ export const PostsListingPage = () => {
 		suggestedUsers,
 		followingUsers
 	} = useContext(PageContext);
-	
-	
 
 	useEffect(() => {
 		fetchPostsData(dispatch, state);
@@ -63,7 +61,9 @@ export const PostsListingPage = () => {
 									))}
 								</ul>
 							) : (
-								<h1>No posts to show</h1>
+								<div className="empty-bookmarks-text">
+									<h2>No posts to show.</h2>
+								</div>
 							)}
 						</div>
 					</div>

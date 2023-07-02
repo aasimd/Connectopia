@@ -60,28 +60,28 @@ export const SuggestedUsersCard = () => {
 												profileImage={user?.profileAvatar}
 												showDate={false}
 											/>
+											<div className="follow-btn">
+												{state?.userInfo?.username !== user?.username &&
+													(!followUserHandler(user.username, state) ? (
+														<button
+															onClick={() =>
+																followHandler(user?.username, state, dispatch)
+															}
+														>
+															Follow
+														</button>
+													) : (
+														<button
+															onClick={() =>
+																unfollowHandler(user?.username, state, dispatch)
+															}
+														>
+															Unfollow
+														</button>
+													))}
+											</div>
 										</div>
 										{/* //make follow button disable for userInfo.user */}
-										<div className="follow-btn">
-											{state?.userInfo?.username !== user?.username &&
-												(!followUserHandler(user.username, state) ? (
-													<button
-														onClick={() =>
-															followHandler(user?.username, state, dispatch)
-														}
-													>
-														Follow
-													</button>
-												) : (
-													<button
-														onClick={() =>
-															unfollowHandler(user?.username, state, dispatch)
-														}
-													>
-														Unfollow
-													</button>
-												))}
-										</div>
 									</li>
 								);
 							})}
@@ -103,15 +103,15 @@ export const SuggestedUsersCard = () => {
 											profileImage={user?.profileAvatar}
 											showDate={false}
 										/>
-									</div>
-									<div className="follow-btn">
-										<button
-											onClick={() =>
-												followHandler(user?.username, state, dispatch)
-											}
-										>
-											Follow
-										</button>
+										<div className="follow-btn">
+											<button
+												onClick={() =>
+													followHandler(user?.username, state, dispatch)
+												}
+											>
+												Follow
+											</button>
+										</div>
 									</div>
 								</li>
 							))}

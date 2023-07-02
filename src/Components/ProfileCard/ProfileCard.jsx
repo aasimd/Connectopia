@@ -88,7 +88,9 @@ export const ProfileCard = ({ userProfile }) => {
 										))}
 								</ul>
 							) : (
-								<h1>No Posts to Show</h1>
+								<div className="empty-bookmarks-text">
+									<h2>No posts to show.</h2>
+								</div>
 							)}
 						</ul>
 					</div>

@@ -21,10 +21,13 @@
 	/* margin: auto; */
 }
 .edit-image-container{
-	width: 80%;
+	width: 60%;
 	margin: auto;
+	position: relative;
 }
 .edit-image-container img {
 	width: 100%;
 }
-
+.edit-post-card .save-discard-buttons button{
+	margin-right: 20px;
+}

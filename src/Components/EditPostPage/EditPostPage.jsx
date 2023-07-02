@@ -67,9 +67,11 @@ export const EditPostPage = ({ post }) => {
 						<div>
 							{tempPost.postImage !== "" ? (
 								<div className="edit-image-container">
-									<button onClick={() => deletePostImageHandler()}>
-										delete image
-									</button>
+									<div className="delete-button-for-create-post">
+										<button onClick={() => deletePostImageHandler()}>
+											<i className="fa-sharp fa-solid fa-circle-xmark"></i>
+										</button>
+									</div>
 									<img alt={"uploaded-image"} src={tempPost.postImage} />
 								</div>
 							) : (
@@ -80,7 +82,7 @@ export const EditPostPage = ({ post }) => {
 							)}
 						</div>
 					</div>
-					<div>
+					<div className="save-discard-buttons">
 						<button onClick={() => discardChangeHandler()}>Discard</button>
 						<button onClick={() => saveChangeHandler()}>Save</button>
 					</div>
