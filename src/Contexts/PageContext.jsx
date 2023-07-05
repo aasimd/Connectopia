@@ -71,18 +71,27 @@ export const PageContextProvider = ({ children }) => {
 	const trendingData = [...state.postsData].filter((post) =>
 		state?.sortType === "trending" ? post.likes.likeCount > 0 : post
 	);
-	const DisplayData = [...trendingData].sort((a, b) => {
+	const DisplayData = () => {
 		if (state?.sortType === "trending") {
-			return b.likes.likeCount - a.likes.likeCount;
+			return [...trendingData].sort(
+				(a, b) => b.likes.likeCount - a.likes.likeCount
+			);
 		}
 		if (state?.sortType === "oldest") {
-			return new Date(a.createdAt) - new Date(b.createdAt);
+			return [...trendingData];
 		}
 		if (state?.sortType === "latest") {
-			return new Date(b.createdAt) - new Date(a.createdAt);
+			return [...trendingData].reverse();
 		}
-		return a - b;
-	});
+		return trendingData;
+		// if (state?.sortType === "oldest") {
+		// 	return a - b;
+		// }
+		// if (state?.sortType === "latest") {
+		// 	return new Date(b.createdAt) - new Date(a.createdAt);
+		// }
+		// return a - b;
+	};
 
 	const FollowingUsersPost = () => {
 		const followingUsers =
@@ -92,7 +101,7 @@ export const PageContextProvider = ({ children }) => {
 						state.userInfo?.username
 				  ]
 				: [state.userInfo?.username];
-		const followingUsersPosts = DisplayData?.filter((post) =>
+		const followingUsersPosts = DisplayData()?.filter((post) =>
 			followingUsers.includes(post?.username)
 		);
 		return followingUsersPosts;

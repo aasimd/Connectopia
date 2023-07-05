@@ -15,6 +15,7 @@ export const ProfileImageAndNames = ({
 }) => {
 	const { state, dispatch } = useContext(PageContext);
 	const findUser = state.usersData.find((user) => user.username === username);
+	const profileAvatar = findUser?.profileAvatar;
 	const navigate = useNavigate();
 	const userProfileClickHandler = (username) => {
 		if (username === state.userInfo?.username) {
@@ -36,10 +37,10 @@ export const ProfileImageAndNames = ({
 			<div className="post-card-profile-pic">
 				<img
 					alt="profile-picture"
-					src={profileImage}
+					src={profileAvatar}
 					onClick={() => {
 						userProfileClickHandler(username);
-						console.log(findUser);
+						// console.log(findUser);
 					}}
 				/>
 			</div>

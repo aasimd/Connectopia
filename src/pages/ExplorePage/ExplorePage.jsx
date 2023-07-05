@@ -56,9 +56,15 @@ export const ExplorePage = () => {
 					<div className="posts-container">
 						{state?.postsData?.length > 0 ? (
 							<ul>
-								{state?.postsData?.map((post) => (
-									<PostsCard key={post._id} post={post} styles={"post-card"} />
-								))}
+								{state?.postsData
+									?.map((post) => (
+										<PostsCard
+											key={post._id}
+											post={post}
+											styles={"post-card"}
+										/>
+									))
+									?.reverse()}
 							</ul>
 						) : (
 							<div className="empty-bookmarks-text">
