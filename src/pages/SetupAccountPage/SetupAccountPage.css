@@ -61,6 +61,16 @@
 .setup-profile-page .select-profile-avatar li {
 	list-style: none;
 	width: 100px;
+	cursor: pointer;
+	transition: 0.7s;
+	
+}
+.setup-profile-page .select-profile-avatar li:hover {
+	transform: scale(1.1);
+	border-radius: 50%;
+}
+.setup-profile-page .select-profile-avatar li img{
+	border-radius: 50%;
 }
 .setup-profile-page .select-profile-avatar li img {
 	width: 100%;
@@ -103,6 +113,18 @@
 	padding: 10px;
 	color: var(--main-color);
 	cursor: pointer;
+	text-align: center;
+}
+.profile-picture-input:hover {
+	border: 2px dashed var(--secondary-color);
+	border-radius: 2px;
+	padding: 10px;
+	color: var(--secondary-color);
+	cursor: pointer;
+}
+.profile-picture-input:active {
+	color: white;
+	background-color: var(--secondary-color);
 }
 .select-profile-avatar div:nth-of-type(3) {
 	text-align: left;
