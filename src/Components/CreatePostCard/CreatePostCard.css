@@ -3,6 +3,27 @@
 * {
 	box-sizing: border-box;
 }
+.image-input-field {
+	display: none;
+}
+.image-input-button {
+	text-align: right;
+}
+.image-input-button button {
+	color: var(--main-color);
+	padding: 0;
+	border: none;
+	background-color: inherit;
+	font-size: 1.5rem;
+	transition: 0.6s;
+}
+.image-input-button button :hover {
+	transform: scale(1.1);
+}
+.image-input-button button:active {
+	color: var(--secondary-color);
+}
+
 .create-new-post-card {
 	width: 500px;
 	margin: -1rem auto 0.2rem auto;
@@ -22,7 +43,7 @@
 }
 .create-new-post-card textarea::placeholder {
 	color: var(--secondary-color);
-	font-weight: 400 ;
+	font-weight: 400;
 	font-size: 1rem;
 }
 .create-new-post-card .upload-image-container img {
@@ -46,7 +67,7 @@
 	color: var(--gray-color);
 }
 .save-discard-buttons {
-	text-align: right;
+	text-align: left;
 	padding-top: 10px;
 }
 .save-discard-buttons button:nth-of-type(1) {

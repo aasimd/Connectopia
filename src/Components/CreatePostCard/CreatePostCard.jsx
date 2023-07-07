@@ -7,14 +7,23 @@ import "./CreatePostCard.css";
 import { fetchCreateNewPost } from "../../FetchFunctions/fetchFunctions";
 import { v4 as uuid } from "uuid";
 import { formatDate } from "../../backend/utils/authUtils";
+// import InputEmoji from "react-input-emoji";
+// import { Picker } from "emoji-mart";
+import data from "@emoji-mart/data";
+// import Picker from "@emoji-mart/react";
+import EmojiPicker from "emoji-picker-react";
+// import "emoji-mart/css/emoji-mart.css";
 
 export const CreatePostCard = () => {
+	const [isPickerVisible, setIsPickerVisible] = useState(false);
+	const [currentEmoji, setCurrentEmoji] = useState(null);
 	const { state, dispatch } = useContext(PageContext);
 	const { userInfo } = state;
 	const [newPost, setNewPost] = useState({
 		content: "",
 		postImage: ""
 	});
+	const [input, setInput] = useState("");
 	const [changed, setChanged] = useState(false);
 	const selectUploadImage = (event) => {
 		setChanged(() => true);
@@ -46,14 +55,25 @@ export const CreatePostCard = () => {
 		}
 	};
 	const savePostHandler = () => {
+		dispatch({ type: "changeIsLoading", payload: true });
 		fetchCreateNewPost(dispatch, createNewPost);
 		setChanged(() => false);
 		setNewPost((p) => ({ ...p, postImage: "", content: "" }));
+		setTimeout(() => {
+			dispatch({ type: "changeIsLoading", payload: false });
+		}, 1500);
 	};
 	const discardPostHandler = () => {
 		setNewPost((p) => ({ ...p, postImage: "", content: "" }));
 		setChanged(() => false);
 	};
+	// const addEmoji = (e) => {
+	// 	let sym = e.unified.split("-");
+	// 	let codesArray = [];
+	// 	sym.forEach((el) => codesArray.push("0x" + el));
+	// 	let emoji = String.fromCodePoint(...codesArray);
+	// 	setInput(input + emoji);
+	// };
 
 	return (
 		<div className="create-new-post-card">
@@ -74,8 +94,23 @@ export const CreatePostCard = () => {
 			<div>
 				{newPost?.postImage === "" ? (
 					<>
-						Upload photo:{" "}
-						<input type="file" onChange={(event) => selectUploadImage(event)} />
+						<div className="image-input-button">
+							<button
+								onClick={() =>
+									document.querySelector(".image-input-field").click()
+								}
+							>
+								<i class="fa-solid fa-image"></i>
+							</button>
+						</div>
+						<div>
+							<input
+								accept="image/*"
+								type="file"
+								className="image-input-field"
+								onChange={(event) => selectUploadImage(event)}
+							/>
+						</div>
 					</>
 				) : (
 					<div className="upload-image-container">
@@ -88,6 +123,23 @@ export const CreatePostCard = () => {
 					</div>
 				)}
 			</div>
+			{/* <div>
+				<button onClick={() => setIsPickerVisible(() => !isPickerVisible)}>
+					Emoji
+				</button>
+			</div>
+			<div>
+				{isPickerVisible && (
+					<Picker
+						data={data}
+						previewPosition={none}
+						onEmojiSelect={(e) => {
+							setCurrentEmoji(e.native);
+							setIsPickerVisible(() => !isPickerVisible);
+						}}
+					/>
+				)}
+			</div> */}
 			<div>
 				{changed && (
 					<div className="save-discard-buttons">

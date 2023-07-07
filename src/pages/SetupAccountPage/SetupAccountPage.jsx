@@ -153,28 +153,45 @@ export const SetupAccountPage = () => {
 										</div>
 									</div>
 									<div className="select-profile-avatar">
-										<h3>Select your profile avatar or Upload your own</h3>
-										<input
-											type="file"
-											accept="image/*"
-											onChange={(event) => uploadProfileAvatarHandler(event)}
-										/>
-										<ul className="demo-profile-avatars-list">
-											{ProfileAvatars.map((pic) => (
-												<li>
-													<img
-														src={pic}
-														alt={"profile-avatar"}
-														onClick={() =>
-															setNewUserProfileData((p) => ({
-																...p,
-																profileAvatar: pic
-															}))
-														}
-													/>
+										<div>
+											<h3>Select your profile avatar or Upload your own</h3>
+										</div>
+										<div>
+											<input
+												id="profile-picture-input-field"
+												type="file"
+												accept="image/*"
+												onChange={(event) => uploadProfileAvatarHandler(event)}
+											/>
+										</div>
+										<div>
+											<ul className="demo-profile-avatars-list">
+												<li className="profile-picture-input"
+													onClick={() =>
+														document
+															.querySelector("#profile-picture-input-field")
+															.click()
+													}
+												>
+													<i class="fa-solid fa-image"></i> Upload from local
+													storage
 												</li>
-											))}
-										</ul>
+												{ProfileAvatars.map((pic) => (
+													<li>
+														<img
+															src={pic}
+															alt={"profile-avatar"}
+															onClick={() =>
+																setNewUserProfileData((p) => ({
+																	...p,
+																	profileAvatar: pic
+																}))
+															}
+														/>
+													</li>
+												))}
+											</ul>
+										</div>
 									</div>
 								</div>
 							</div>
