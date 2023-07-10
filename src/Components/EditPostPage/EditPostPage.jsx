@@ -59,13 +59,18 @@ export const EditPostPage = ({ post }) => {
 							/>
 						</div>
 						<div>
-							<textarea
-								onChange={(e) =>
-									setTempPost(() => ({ ...tempPost, content: e.target.value }))
-								}
-								placeholder="type something..."
-								value={tempPost.content}
-							/>
+							<div className="edit-post-textarea-container">
+								<textarea
+									onChange={(e) =>
+										setTempPost(() => ({
+											...tempPost,
+											content: e.target.value
+										}))
+									}
+									placeholder="type something..."
+									value={tempPost.content}
+								/>
+							</div>
 							<div>
 								{tempPost.postImage !== "" ? (
 									<div className="edit-image-container">
@@ -82,7 +87,8 @@ export const EditPostPage = ({ post }) => {
 											<button
 												onClick={() =>
 													document.querySelector(".image-input-field").click()
-												} title="upload image"
+												}
+												title="upload image"
 											>
 												<i class="fa-solid fa-image"></i>
 											</button>
@@ -99,7 +105,7 @@ export const EditPostPage = ({ post }) => {
 								)}
 							</div>
 						</div>
-						
+
 						<div className="save-discard-buttons">
 							<button onClick={() => discardChangeHandler()}>Discard</button>
 							<button onClick={() => saveChangeHandler()}>Save</button>
