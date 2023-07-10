@@ -5,7 +5,7 @@ import { ProfileImageAndNames } from "../ProfileImageAndNames/ProfileImageAndNam
 
 export const FollowersCard = ({ followers, setShowFollowersCard }) => {
 	return (
-		<div>
+		<div style={{position:"relative"}}>
 			<div className="close-options-button">
 				<button onClick={() => setShowFollowersCard(false)}>
 					<i className="fa-solid fa-xmark"></i>
