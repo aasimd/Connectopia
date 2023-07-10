@@ -6,14 +6,14 @@ import { ProfileImageAndNames } from "../../ProfileImageAndNames/ProfileImageAnd
 export const FollowingCard = ({ following, setShowFollowingCard }) => {
 	return (
 		<div>
-			<h1>Following</h1>
-			{following.length > 0 ? (
-				<div>
-					<div className="close-options-button">
+			<div className="close-options-button">
 						<button onClick={() => setShowFollowingCard(false)}>
 							<i className="fa-solid fa-xmark"></i>
 						</button>
-					</div>
+					</div><h1>Following</h1>
+			{following.length > 0 ? (
+				<div>
+					
 
 					<ul>
 						{following.map((following) => (

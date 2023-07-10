@@ -6,15 +6,14 @@ import { ProfileImageAndNames } from "../ProfileImageAndNames/ProfileImageAndNam
 export const FollowersCard = ({ followers, setShowFollowersCard }) => {
 	return (
 		<div>
+			<div className="close-options-button">
+				<button onClick={() => setShowFollowersCard(false)}>
+					<i className="fa-solid fa-xmark"></i>
+				</button>
+			</div>
 			<h1>Followers</h1>
 			{followers.length > 0 ? (
 				<div>
-					<div className="close-options-button">
-						<button onClick={() => setShowFollowersCard(false)}>
-							<i className="fa-solid fa-xmark"></i>
-						</button>
-					</div>
-
 					<ul>
 						{followers.map((follower) => (
 							<li key={follower.id}>
