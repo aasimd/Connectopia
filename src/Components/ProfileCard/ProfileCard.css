@@ -80,3 +80,61 @@
 .edit-profile-button button:hover {
 	background-color: var(--secondary-color);
 }
+.user-followers-following-post-display {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	padding: 20px;
+	margin: 20px 0px 20px 100px;
+	background-color: var(--light-gray-color);
+	border-radius: 50px;
+	color: var(--secondary-color);
+}
+.user-followers-following-post-display ul {
+	display: flex;
+	gap: 1rem;
+	font-size: 1rem;
+}
+.user-followers-following-post-display ul li:hover {
+	text-decoration: underline;
+	text-decoration-thickness: 2px;
+	cursor: pointer;
+}
+
+.followers-card,
+.following-card {
+	position: fixed;
+	z-index: 7;
+	filter: blur(1);
+	background-color: white;
+	width: 400px;
+	height: 400px;
+	margin: auto;
+	left: 0;
+	right: 0;
+	top: 0;
+	border-radius: 20px;
+	bottom: 0;
+	inset: 0;
+	box-shadow: 0 0 6px 4px rgba(0, 0, 0, 0.4);
+	padding: 20px;
+	backdrop-filter: blur(5px);
+	background-color: rgba(255, 255, 255, 0.7);
+	-webkit-backdrop-filter: blur(5px);
+}
+.followers-card h1,
+.following-card h1 {
+	color: var(--secondary-color);
+	padding-bottom: 20px;
+	border-bottom: 2px solid var(--secondary-color);
+}
+.followers-card .close-options-button,
+.following-card .close-options-button {
+	position: absolute;
+	right: 20px;
+	top: 2px;
+}
+.followers-card .close-options-button button,
+.following-card .close-options-button button {
+	font-size: 2rem;
+}

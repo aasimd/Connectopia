@@ -32,7 +32,8 @@ export const EditPostPage = ({ post }) => {
 	const deletePostImageHandler = () => {
 		setTempPost((prev) => ({ ...prev, postImage: "" }));
 	};
-	const uploadImageHandler = (event) => {
+
+	const selectUploadImage = (event) => {
 		const image = URL.createObjectURL(event.target.files[0]);
 		setTempPost((p) => ({ ...p, postImage: image }));
 	};
@@ -49,42 +50,60 @@ export const EditPostPage = ({ post }) => {
 						</button>{" "}
 						Edit Post
 					</div>
-					<div>
-						<ProfileImageAndNames
-							fullName={post.fullName}
-							username={post.username}
-							profileImage={post.profileAvatar}
-						/>
-					</div>
-					<div>
-						<textarea
-							onChange={(e) =>
-								setTempPost(() => ({ ...tempPost, content: e.target.value }))
-							}
-							placeholder="type something..."
-							value={tempPost.content}
-						/>
+					<div className="edit-post">
 						<div>
-							{tempPost.postImage !== "" ? (
-								<div className="edit-image-container">
-									<div className="delete-button-for-create-post">
-										<button onClick={() => deletePostImageHandler()}>
-											<i className="fa-sharp fa-solid fa-circle-xmark"></i>
-										</button>
-									</div>
-									<img alt={"uploaded-image"} src={tempPost.postImage} />
-								</div>
-							) : (
-								<input
-									type="file"
-									onChange={(event) => uploadImageHandler(event)}
-								/>
-							)}
+							<ProfileImageAndNames
+								fullName={post.fullName}
+								username={post.username}
+								profileImage={post.profileAvatar}
+							/>
 						</div>
-					</div>
-					<div className="save-discard-buttons">
-						<button onClick={() => discardChangeHandler()}>Discard</button>
-						<button onClick={() => saveChangeHandler()}>Save</button>
+						<div>
+							<textarea
+								onChange={(e) =>
+									setTempPost(() => ({ ...tempPost, content: e.target.value }))
+								}
+								placeholder="type something..."
+								value={tempPost.content}
+							/>
+							<div>
+								{tempPost.postImage !== "" ? (
+									<div className="edit-image-container">
+										<div className="delete-button-for-create-post">
+											<button onClick={() => deletePostImageHandler()}>
+												<i className="fa-sharp fa-solid fa-circle-xmark"></i>
+											</button>
+										</div>
+										<img alt={"uploaded-image"} src={tempPost.postImage} />
+									</div>
+								) : (
+									<>
+										<div className="image-input-button">
+											<button
+												onClick={() =>
+													document.querySelector(".image-input-field").click()
+												} title="upload image"
+											>
+												<i class="fa-solid fa-image"></i>
+											</button>
+										</div>
+										<div>
+											<input
+												accept="image/*"
+												type="file"
+												className="image-input-field"
+												onChange={(event) => selectUploadImage(event)}
+											/>
+										</div>
+									</>
+								)}
+							</div>
+						</div>
+						
+						<div className="save-discard-buttons">
+							<button onClick={() => discardChangeHandler()}>Discard</button>
+							<button onClick={() => saveChangeHandler()}>Save</button>
+						</div>
 					</div>
 				</div>
 			</div>

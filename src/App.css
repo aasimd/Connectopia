@@ -80,6 +80,7 @@
 }
 .middle-column {
 	grid-area: middle;
+	width: 680px;
 	/* flex: 2;
 	background-color: lightblue;*/
 	/* padding: 10px;  */

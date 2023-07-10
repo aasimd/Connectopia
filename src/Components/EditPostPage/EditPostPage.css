@@ -31,3 +31,9 @@
 .edit-post-card .save-discard-buttons button{
 	margin-right: 20px;
 }
+.edit-post-card textarea{
+	margin: 20px;
+}
+.edit-post{
+	padding: 20px;
+}

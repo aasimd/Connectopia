@@ -5,6 +5,8 @@
 }
 
 .sort-options-section {
+	border-bottom: 2px solid var(--medium-gray-color);
+	width: 100%;
 	position: relative;
 	padding: 10px;
 	border-top: 2px solid var(--gray-color);
@@ -22,22 +24,23 @@
 }
 .sort-options-card {
 	position: absolute;
-    top: -5px;
-	right: 5px;
+	top: -5px;
+	right: 80px;
 	z-index: 6;
 	background-color: white;
 	padding: 10px;
 }
 .sort-inputs {
-    padding: 20px;
-    box-shadow: 0 0 6px 2px rgba(0,0,0,0.3);
-    text-align: left;
+	padding: 20px;
+	box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.3);
+	text-align: left;
 }
 .display-sort-type {
 	font-weight: 600;
 	padding: 2px;
 	font-size: 1.4rem;
 	position: absolute;
+	left: 80px;
 	text-transform: capitalize;
-    color: var(--main-color);
+	color: var(--main-color);
 }

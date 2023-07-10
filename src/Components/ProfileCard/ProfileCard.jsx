@@ -12,6 +12,9 @@ import {
 	followUserHandler,
 	unfollowHandler
 } from "../../Functions/followUserHandler";
+import { ProfileImageAndNames } from "../ProfileImageAndNames/ProfileImageAndNames";
+import { FollowersCard } from "../FollowersCard/FollowersCard";
+import { FollowingCard } from "../FollowersCard/FollowingCard/FollowingCard";
 export const ProfileCard = ({ userProfile }) => {
 	const {
 		username,
@@ -23,19 +26,37 @@ export const ProfileCard = ({ userProfile }) => {
 		following,
 		followers
 	} = userProfile;
+	const [showFollowersCard, setShowFollowersCard] = useState(false);
+	const [showFollowingCard, setShowFollowingCard] = useState(false);
 	const { state, dispatch } = useContext(PageContext);
-	const [editProfile, setEditProfile] = useState(false);
 	const navigate = useNavigate();
+	const postsByUserCount = state?.postsData?.reduce(
+		(acc, curr) => (curr.username === username ? acc + 1 : acc),
+		0
+	);
 	useEffect(() => {
 		fetchPostsData(dispatch);
 	}, [state.postsData]);
 	return (
-		<div>
-			{/* <div>
-				{editProfile && (
-					<EditProfileCard user={userProfile} setEditProfile={setEditProfile} />
-				)}
-			</div> */}
+		<div
+			className={showFollowersCard || showFollowingCard ? "profile-card-blur" : ""}
+		>
+			{showFollowersCard && (
+				<div className="followers-card">
+					<FollowersCard
+						followers={followers}
+						setShowFollowersCard={setShowFollowersCard}
+					/>
+				</div>
+			)}
+			{showFollowingCard && (
+				<div className="following-card">
+					<FollowingCard
+						following={following}
+						setShowFollowingCard={setShowFollowingCard}
+					/>
+				</div>
+			)}
 			<div>
 				<h1 className="page-heading-name ">
 					{state?.userInfo?.username === userProfile?.username
@@ -88,13 +109,42 @@ export const ProfileCard = ({ userProfile }) => {
 							)}
 						</div>
 					</div>
+					<div className="user-followers-following-post-display">
+						<ul>
+							<li>
+								<b
+									onClick={() => {
+										setShowFollowersCard(true);
+										setShowFollowingCard(false);
+									}}
+								>
+									{followers.length} Followers
+								</b>
+							</li>
+							<li>
+								<b
+									onClick={() => {
+										setShowFollowingCard(true);
+										setShowFollowersCard(false);
+									}}
+								>
+									{following.length} Following
+								</b>
+							</li>
+							<li>
+								<b>
+									{postsByUserCount} {postsByUserCount > 1 ? "Posts" : "Post"}
+								</b>
+							</li>
+						</ul>
+					</div>
 				</section>
 				<section>
 					<div>
 						<h1>
 							{state?.userInfo?.username === userProfile?.username
 								? "Your "
-								: "User "}
+								: "User's "}
 							Posts
 						</h1>
 						<ul>
