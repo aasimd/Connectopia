@@ -6,6 +6,7 @@ import { ProfileImageAndNames } from "../ProfileImageAndNames/ProfileImageAndNam
 export const FollowersCard = ({ followers, setShowFollowersCard }) => {
 	return (
 		<div>
+			<h1>Followers</h1>
 			{followers.length > 0 ? (
 				<div>
 					<div className="close-options-button">
@@ -13,7 +14,7 @@ export const FollowersCard = ({ followers, setShowFollowersCard }) => {
 							<i className="fa-solid fa-xmark"></i>
 						</button>
 					</div>
-					<h1>Followers</h1>
+
 					<ul>
 						{followers.map((follower) => (
 							<li key={follower.id}>
