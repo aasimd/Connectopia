@@ -5,6 +5,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { PageContext } from "../../Contexts/PageContext";
 import "./NavBar.css";
 import { ProfileImageAndNames } from "../ProfileImageAndNames/ProfileImageAndNames";
+import { FooterCard } from "../FooterCard/FooterCard";
 const activeButtonStyles = ({ isActive }) =>
 	isActive
 		? {
@@ -80,6 +81,7 @@ export const NavBar = () => {
 					/>
 				</NavLink>
 			</div>
+			
 		</div>
 	);
 };

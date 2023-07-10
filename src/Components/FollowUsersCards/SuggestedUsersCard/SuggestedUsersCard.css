@@ -5,9 +5,12 @@
 	padding: 0;
 }
 .suggested-users-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	min-width: 90%;
 	padding: 20px;
-	float: left;
+	/* float: left; */
 	/* border: 1px solid; */
 	height: 100vh;
 	background-color: var(--light-gray-color);

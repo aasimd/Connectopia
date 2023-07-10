@@ -10,6 +10,7 @@ import {
 	followUserHandler,
 	unfollowHandler
 } from "../../../Functions/followUserHandler";
+import { FooterCard } from "../../FooterCard/FooterCard";
 export const SuggestedUsersCard = () => {
 	const { state, dispatch, suggestedUsers } = useContext(PageContext);
 	const [searchInput, setSearchInput] = useState("");
@@ -118,6 +119,9 @@ export const SuggestedUsersCard = () => {
 						</ul>
 					</div>
 				)}
+			</div>
+			<div className="footer">
+				<FooterCard />
 			</div>
 		</div>
 	);
