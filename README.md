@@ -10,11 +10,11 @@ Features:
     Edit/Delete Post
     User Timeline
     Explore Feed
-    Follow/Unfollow
     Bookmark Post
     Delete Bookmark
     Authentication
     Like/Unllike
     User Profile (Bio, portfolio URL, Profile Picture)
+    Edit User Profile
     Search User
     
