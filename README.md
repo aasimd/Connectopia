@@ -5,6 +5,7 @@ Social Media App for People to Connect.
 Features:
 
     Create a Post
+    Follow/Unfollow User
     Add Images to create Posts
     Edit/Delete Post
     User Timeline
@@ -14,7 +15,6 @@ Features:
     Delete Bookmark
     Authentication
     Like/Unllike
-    Comment on posts
     User Profile (Bio, portfolio URL, Profile Picture)
     Search User
     
