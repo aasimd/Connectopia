@@ -55,7 +55,13 @@ export const IndividualPostPage = () => {
 				</nav>
 				<div>
 					<div className="middle-column">
-						<div className="posts-container individual-post-page">
+					<div className="connectopia-header-for-small-displays">
+						<header className="connectopia-name-header">
+							<h1 onClick={() => navigate("/posts")}>
+								<span>Connect</span>opia
+							</h1>
+						</header>
+					</div><div className="posts-container individual-post-page">
 							<div className="back-button-section">
 								<button onClick={() => navigate("/posts")}>
 									<i className="fa-solid fa-arrow-left"></i>

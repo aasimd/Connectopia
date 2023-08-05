@@ -86,9 +86,24 @@ export const ProfileCard = ({ userProfile }) => {
 						</div>
 						<div className="edit-profile-button">
 							{state.userInfo?.username === username ? (
-								<button onClick={() => navigate("/setupaccount")}>
-									Edit Profile
-								</button>
+								<>
+									<button onClick={() => navigate("/setupaccount")}>
+										Edit Profile
+									</button>
+									<button
+										style={{
+											backgroundColor: "white",
+											border: "2px solid #ff3b30",
+											color: "#ff3b30"
+										}}
+										onClick={() => {
+											navigate("/");
+											dispatch({ type: "setLogin", payload: false });
+										}}
+									>
+										Logout
+									</button>
+								</>
 							) : (
 								<div className="follow-btn">
 									{state?.userInfo?.username !== username &&
@@ -143,7 +158,7 @@ export const ProfileCard = ({ userProfile }) => {
 				</section>
 				<section>
 					<div>
-						<h1>
+						<h1 style={{ padding: "10px 0 20px 0" }}>
 							{state?.userInfo?.username === userProfile?.username
 								? "Your "
 								: "User's "}

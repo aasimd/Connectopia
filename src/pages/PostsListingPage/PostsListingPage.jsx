@@ -18,6 +18,7 @@ import "../../App.css";
 import { SortButtonsCard } from "../../Components/SortButtonsCard/SortButtonsCard";
 import { ProgressBar } from "react-loader-spinner";
 import { NavBarSmallDisplays } from "../../Components/NavBarSmallDisplays/NavBarSmallDisplays";
+import { useNavigate } from "react-router";
 export const PostsListingPage = () => {
 	const {
 		state,
@@ -27,6 +28,7 @@ export const PostsListingPage = () => {
 		// suggestedUsers,
 		// followingUsers
 	} = useContext(PageContext);
+	const navigate = useNavigate();
 	useEffect(() => {
 		dispatch({ type: "changeIsLoading", payload: true });
 		setTimeout(() => {
@@ -65,6 +67,13 @@ export const PostsListingPage = () => {
 					</nav>
 
 					<div className="middle-column">
+						<div className="connectopia-header-for-small-displays">
+							<header className="connectopia-name-header">
+								<h1 onClick={() => navigate("/posts")}>
+									<span>Connect</span>opia
+								</h1>
+							</header>
+						</div>
 						<div className="posts-container">
 							<h1 className="page-heading-name ">Home</h1>
 							<div>

@@ -87,14 +87,32 @@
 	bottom: 0px;
 }
 .nav-for-small-displays ul {
-	padding: 20px;
+	padding: 10px 30px;
 	font-size: 1.5rem;
 	position: relative;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 }
+.connectopia-header-for-small-displays {
+	display: block;
+	text-align: left;
+	/* background-color: var(--light-gray-color); */
+	border-bottom: 2px solid var(--black-color);
+}
+.connectopia-header-for-small-displays header h1 {
+	margin-top: -10px;
+	font-size: 1.85rem;
+	padding-bottom: 10px;
+}
+.connectopia-header-for-small-displays header h1 span {
+	/* margin-top: -10px; */
+	font-size: 1.85rem;
+}
 @media screen and (min-width: 1028px) {
+	.connectopia-header-for-small-displays {
+		display: none;
+	}
 	.nav-for-small-displays {
 		display: none;
 	}

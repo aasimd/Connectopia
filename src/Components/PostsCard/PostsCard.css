@@ -68,11 +68,14 @@ ul {
 	object-position: 50% 50%;
 	border-radius: 50%;
 }
-.post-card-text-content p {
-	padding-top: 1rem;
-	font-size: 1rem;
+.post-card .post-card-text-content p {
+	padding-top: 0.5rem;
+	font-size: 0.85rem;
 	font-weight: 400;
 	color: #222222;
+}
+.individual-post .post-card-text-content p {
+	font-size: 1rem;
 }
 .post-card-content-container {
 	padding-left: 50px;

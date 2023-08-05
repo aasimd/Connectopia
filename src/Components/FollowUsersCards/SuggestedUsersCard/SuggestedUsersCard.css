@@ -7,13 +7,37 @@
 
 .suggested-users-card {
 	display: none;
+}
+.search-users {
+	text-align: left;
+}
+.suggest-users-for-small-display
+	.search-users-section
+	div
+	input[type="search"] {
+	/* text-align: center; */
+	display: block;
+	width: 75%;
+	padding: 10px;
+	font-size: 0.75rem;
+	border: 1px solid var(--medium-gray-color);
+	border-radius: 15px;
+	color: var(--main-color);
+}
+.suggest-users-for-small-display ul li {
+	display: block;
+	width: 300px;
+	position: relative;
+}
+.suggest-users-for-small-display {
+	display: block;
 	flex-direction: column;
 	justify-content: space-between;
 	min-width: 90%;
 	padding: 20px;
 	/* float: left; */
 	/* border: 1px solid; */
-	height: 100vh;
+	/* height: 100vh; */
 	background-color: var(--light-gray-color);
 }
 .suggested-users-card div {
@@ -36,7 +60,60 @@
 	/* width: 300px;
 	position: relative; */
 }
+.suggest-users-for-small-display {
+	display: block;
+}
+.suggested-users-card .follow-btn {
+	position: relative;
+	top: 10px;
+	/* float: right; */
+	/* text-align: right; */
+	/* margin-top: -20px; */
+	/* left: 220px; */
+}
+.follow-btn button {
+	color: var(--main-color);
+	background-color: white;
+	border: 1px solid var(--main-color);
+	border-radius: 5px;
+	padding: 2px 5px;
+	transition: 0.5s;
+}
+.follow-btn button:hover {
+	transform: scale(1.1);
+	background-color: var(--main-color);
+	color: white;
+}
+.suggest-users-for-small-display .users-search-results-card {
+	margin: auto;
+	display: flex;
+	justify-content: space-evenly;
+	border: 1px solid var(--gray-color);
+	background-color: white;
+	border-radius: 10px;
+	margin: 5px;
+	padding: 10px;
+}
+
 @media screen and (min-width: 1028px) {
+	.users-search-results-card {
+		margin: auto;
+		display: flex;
+		justify-content: space-evenly;
+		border: none;
+		background-color: white;
+		border-radius: 10px;
+		/* margin: 5px; */
+		/* padding: 10px; */
+	}
+	.users-search-results-card {
+		display: flex;
+		justify-content: space-evenly;
+	}
+
+	.suggest-users-for-small-display {
+		display: none;
+	}
 	.suggested-users-card {
 		display: flex;
 		flex-direction: column;
@@ -96,12 +173,16 @@
 	.suggested-users-section ul li div:nth-of-type(1) {
 		margin-left: -5px;
 	}
-	.suggested-users-card .follow-btn {
+	.suggested-users-card .users-search-results-card .follow-btn{
 		position: relative;
 		/* float: right; */
 		text-align: right;
-		margin-top: -20px;
+		margin-top: 40px;
 		/* left: 220px; */
+	}
+	.suggested-users ul li {
+		display: flex;
+		flex-direction: row;
 	}
 	.follow-btn button {
 		color: var(--main-color);

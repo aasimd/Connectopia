@@ -9,9 +9,11 @@ import { NavBar } from "../../Components/NavBar/NavBar";
 import { SuggestedUsersCard } from "../../Components/FollowUsersCards/SuggestedUsersCard/SuggestedUsersCard";
 import { ProgressBar } from "react-loader-spinner";
 import { NavBarSmallDisplays } from "../../Components/NavBarSmallDisplays/NavBarSmallDisplays";
+import { useNavigate } from "react-router";
 
 export const ProfilePage = () => {
 	const { state, dispatch, FollowingUsersPost } = useContext(PageContext);
+	const navigate = useNavigate();
 	useEffect(() => {
 		fetchUsersList(dispatch);
 	}, [state.usersData]);
@@ -46,13 +48,20 @@ export const ProfilePage = () => {
 				</nav>
 
 				<div className="middle-column">
+					<div className="connectopia-header-for-small-displays">
+						<header className="connectopia-name-header">
+							<h1 onClick={() => navigate("/posts")}>
+								<span>Connect</span>opia
+							</h1>
+						</header>
+					</div>
 					<div className="posts-container">
 						<ProfileCard userProfile={state.userInfo} />
 					</div>
-					
-				</div><footer className="nav-for-small-displays">
-						<NavBarSmallDisplays />
-					</footer>
+				</div>
+				<footer className="nav-for-small-displays">
+					<NavBarSmallDisplays />
+				</footer>
 				<div>
 					<SuggestedUsersCard className="right-column" />
 				</div>

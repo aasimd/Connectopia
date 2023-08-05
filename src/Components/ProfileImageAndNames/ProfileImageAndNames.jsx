@@ -45,7 +45,7 @@ export const ProfileImageAndNames = ({
 				/>
 			</div>
 			<div className="post-card-profile-names">
-				<b>
+				<b style={{fontSize:"1rem"}}>
 					<span
 						onClick={() => {
 							userProfileClickHandler(username);

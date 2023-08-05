@@ -14,9 +14,12 @@ import { NavBar } from "../../Components/NavBar/NavBar";
 import { SuggestedUsersCard } from "../../Components/FollowUsersCards/SuggestedUsersCard/SuggestedUsersCard";
 import { ProgressBar } from "react-loader-spinner";
 import { NavBarSmallDisplays } from "../../Components/NavBarSmallDisplays/NavBarSmallDisplays";
+import { SearchUsersCard } from "../../Components/SearchUsersCard/SearchUsersCard";
+import { useNavigate } from "react-router";
 
 export const ExplorePage = () => {
 	const { state, dispatch, DisplayData } = useContext(PageContext);
+	const navigate = useNavigate();
 	useEffect(() => {
 		dispatch({ type: "changeIsLoading", payload: true });
 		setTimeout(() => {
@@ -53,7 +56,17 @@ export const ExplorePage = () => {
 					<NavBar />
 				</nav>
 				<div className="middle-column">
+					<div className="connectopia-header-for-small-displays">
+						<header className="connectopia-name-header">
+							<h1 onClick={() => navigate("/posts")}>
+								<span>Connect</span>opia
+							</h1>
+						</header>
+					</div>
 					<h1 className="page-heading-name ">Explore</h1>
+					<div className="suggest-users-for-small-display ">
+						<SearchUsersCard />
+					</div>
 					<div className="posts-container">
 						{state?.postsData?.length > 0 ? (
 							<ul style={{ paddingBottom: "4rem" }}>

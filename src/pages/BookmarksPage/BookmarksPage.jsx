@@ -10,8 +10,10 @@ import { NavBar } from "../../Components/NavBar/NavBar";
 import { SuggestedUsersCard } from "../../Components/FollowUsersCards/SuggestedUsersCard/SuggestedUsersCard";
 import { ProgressBar } from "react-loader-spinner";
 import { NavBarSmallDisplays } from "../../Components/NavBarSmallDisplays/NavBarSmallDisplays";
+import { useNavigate } from "react-router";
 export const BookmarksPage = () => {
 	const { state, dispatch } = useContext(PageContext);
+	const navigate = useNavigate();
 	useEffect(() => {
 		fetchGetBookmarks(dispatch);
 	}, []);
@@ -51,8 +53,15 @@ export const BookmarksPage = () => {
 				<nav className="left-column">
 					<NavBar />
 				</nav>
-				
+
 				<div className="middle-column">
+					<div className="connectopia-header-for-small-displays">
+						<header className="connectopia-name-header">
+							<h1 onClick={() => navigate("/posts")}>
+								<span>Connect</span>opia
+							</h1>
+						</header>
+					</div>
 					<h1 className="page-heading-name">Bookmarks</h1>
 					<div className="posts-container bookmarks-page">
 						{state.bookmarkedPosts.length > 0 ? (
