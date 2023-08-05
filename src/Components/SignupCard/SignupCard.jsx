@@ -137,12 +137,15 @@ export const SignupCard = ({ setPageState }) => {
 					)}
 				</div>
 				<div className="signup-submit-button">
-					<input type="submit" value="Submit" />
+					<input type="submit" value="Submit" className="primary-button" />
 				</div>
 			</form>
 			{/* <button>Use Random Credentials</button> */}
 			{/* <br /> */}
-			<button onClick={() => setPageState(() => "login")}>
+			<button
+				onClick={() => setPageState(() => "login")}
+				className="ternary-button"
+			>
 				Already have an Account?
 			</button>
 		</div>

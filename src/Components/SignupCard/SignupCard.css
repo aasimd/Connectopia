@@ -46,27 +46,40 @@ button {
 	border-radius: 10px;
 	border: 1px solid var(--gray-color);
 }
-.signup-card form input[type="submit"] {
+/* .signup-card form input[type="submit"] {
 	margin-top: 20px;
-	padding: 10px 20px;
-	font-size: 1.2rem;
+	padding: 5px 10px;
+	font-size: 1rem;
+	color: white;
+	background-color: var(--main-color);
+	font-weight: 600;
+	border: none;
+	border-radius: 10px;
+} */
+/* .signup-card  */
+.primary-button {
+	margin-top: 20px;
+	padding: 5px 10px;
+	font-size: 1rem;
 	color: white;
 	background-color: var(--main-color);
 	font-weight: 600;
 	border: none;
 	border-radius: 10px;
 }
-.signup-card button {
+/* .signup-card  */
+.ternary-button {
 	margin-top: 10px;
 	padding: 10px 20px;
-	font-size: 1.2rem;
+	font-size: 1rem;
 	background-color: white;
 	color: var(--main-color);
 	font-weight: 400;
 	border: none;
 	border-radius: 10px;
 }
-.login-submit-button,.signup-submit-button{
+.login-submit-button,
+.signup-submit-button {
 	text-align: center;
 }
 @media screen and (min-width: 650px) {
@@ -98,7 +111,8 @@ button {
 		border-radius: 10px;
 		border: 1px solid var(--gray-color);
 	}
-	.signup-card form input[type="submit"] {
+	/* .signup-card  */
+	.primary-button {
 		margin-top: 20px;
 		padding: 10px 20px;
 		font-size: 1.5rem;
@@ -108,7 +122,8 @@ button {
 		border: none;
 		border-radius: 10px;
 	}
-	.signup-card button {
+	/* .signup-card  */
+	.ternary-button {
 		margin-top: 10px;
 		padding: 10px 20px;
 		font-size: 1.5rem;
@@ -120,11 +135,13 @@ button {
 	}
 }
 @media screen and (min-width: 1028px) {
-	.signup-card, .login-card {
+	.signup-card,
+	.login-card {
 		padding: 3rem 1rem;
 		/* text-align: left; */
 	}
-	.signup-card form,.login-card form {
+	.signup-card form,
+	.login-card form {
 		text-align: left;
 	}
 	.signup-card h1 {
@@ -132,7 +149,8 @@ button {
 		font-size: 2.2rem;
 		font-weight: 700;
 	}
-	.signup-card form label,.login-card form label {
+	.signup-card form label,
+	.login-card form label {
 		color: var(--black-color);
 		font-size: 1.5rem;
 		font-weight: 500;
@@ -149,7 +167,8 @@ button {
 		border-radius: 10px;
 		border: 1px solid var(--gray-color);
 	}
-	.signup-card form input[type="submit"] {
+	/* .signup-card  */
+	.primary-button {
 		margin: 20px auto;
 		padding: 10px 20px;
 		font-size: 1.5rem;
@@ -160,7 +179,8 @@ button {
 		border-radius: 10px;
 		/* margin: auto; */
 	}
-	.signup-card button {
+	/* .signup-card  */
+	.ternary-button {
 		margin-top: 10px;
 		padding: 10px 20px;
 		font-size: 1.5rem;
@@ -170,4 +190,24 @@ button {
 		border: none;
 		border-radius: 10px;
 	}
+	/* .signup-card form input[type="submit"] {
+		margin-top: 20px;
+		padding: 10px 20px;
+		font-size: 1.2rem;
+		color: white;
+		background-color: var(--main-color);
+		font-weight: 600;
+		border: none;
+		border-radius: 10px;
+	}
+	.signup-card button {
+		margin-top: 10px;
+		padding: 10px 20px;
+		font-size: 1.2rem;
+		background-color: white;
+		color: var(--main-color);
+		font-weight: 400;
+		border: none;
+		border-radius: 10px;
+	} */
 }

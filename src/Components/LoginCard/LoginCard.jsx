@@ -72,19 +72,26 @@ export const LoginCard = ({ setPageState }) => {
 						/>
 						Show Password
 					</label>
-				</div><br/>
+				</div>
+				<br />
 				{showLoginError && (
 					<b className="login-error-message">
-						<i className="fa-solid fa-xmark"></i> Wrong username or password entered
+						<i className="fa-solid fa-xmark"></i> Wrong username or password
+						entered
 					</b>
 				)}
 				<div className="login-submit-button">
-					<input type="submit" value="Submit" />
+					<input type="submit" className="primary-button" value="Submit" />
 				</div>
 			</form>
-			<button onClick={useGuestCredsHandler}>Use Guest Credentials</button>
+			<button className="secondary-button" onClick={useGuestCredsHandler}>
+				Use Guest Credentials
+			</button>
 			<br />
-			<button onClick={() => setPageState(() => "signup")}>
+			<button
+				className="ternary-button"
+				onClick={() => setPageState(() => "signup")}
+			>
 				New Here? Create a new Account...
 			</button>
 		</div>

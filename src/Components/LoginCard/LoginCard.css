@@ -41,7 +41,8 @@
 	border: 1px solid var(--gray-color);
 } */
 
-.login-card form input[type="submit"] {
+/* .login-card */
+.primary-button {
 	margin-top: 20px;
 	padding: 10px 20px;
 	font-size: 1.2rem;
@@ -51,17 +52,19 @@
 	border: none;
 	border-radius: 10px;
 }
-.login-card button:nth-of-type(1) {
+/* .login-card  */
+.secondary-button {
 	margin-top: 10px;
-	padding: 10px 20px;
-	font-size: 1.2rem;
+	padding: 5px 10px;
+	font-size: 1rem;
 	background-color: white;
 	color: var(--main-color);
 	font-weight: 400;
 	border: 2px solid var(--main-color);
 	border-radius: 10px;
 }
-.login-card button:nth-of-type(2) {
+/* .login-card  */
+.ternary-button {
 	margin-top: 10px;
 	padding: 10px 20px;
 	font-size: 1.2rem;
@@ -97,7 +100,8 @@
 		border: 1px solid var(--gray-color);
 	}
 
-	.login-card form input[type="submit"] {
+	/* .login-card */
+	.primary-button {
 		margin-top: 20px;
 		padding: 10px 20px;
 		font-size: 1.5rem;
@@ -107,7 +111,8 @@
 		border: none;
 		border-radius: 10px;
 	}
-	.login-card button:nth-of-type(1) {
+	/* .login-card */
+	.secondary-button {
 		margin-top: 10px;
 		padding: 10px 20px;
 		font-size: 1.5rem;
@@ -117,7 +122,8 @@
 		border: 2px solid var(--main-color);
 		border-radius: 10px;
 	}
-	.login-card button:nth-of-type(2) {
+	/* .login-card */
+	.ternary-button {
 		margin-top: 10px;
 		padding: 10px 20px;
 		font-size: 1.5rem;
