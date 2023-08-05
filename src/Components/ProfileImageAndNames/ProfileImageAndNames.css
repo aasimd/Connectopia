@@ -5,27 +5,31 @@
 }
 
 .profile-image-and-names-card {
-	width: 500px;
+	width: 100%;
 	margin: auto;
 	position: relative;
-	padding: 20px;
+	padding: 5px;
 	text-align: left;
 	border-radius: 10px;
 	cursor: pointer;
 }
-
 .post-card-profile-names {
 	position: absolute;
-	top: 15px;
-	left: 70px;
+	top: 3px;
+	left: 45px;
+}
+.date-span {
+	font-weight: 500;
+	font-size: 0.8rem;
+	color: var(--gray-color);
 }
 .post-card-profile-names b {
-	font-size: 18px;
+	font-size: 1rem;
 	color: #333333;
 	font-weight: 700;
 }
 .post-card-profile-names p {
-	font-size: 14px;
+	font-size: 0.8rem;
 	color: #555555;
 	font-weight: 500;
 	margin-top: -2px;
@@ -42,9 +46,53 @@
 	object-position: 50% 50%;
 	border-radius: 50%;
 }
-.date-span {
-	font-size: 1rem;
-	font-weight: 400;
-	color: var(--gray-color);
-	cursor: default;
+@media screen and (min-width: 1028px) {
+	.profile-image-and-names-card {
+		width: 500px;
+		margin: auto;
+		position: relative;
+		padding: 20px;
+		text-align: left;
+		border-radius: 10px;
+		cursor: pointer;
+	}
+	.post-card-profile-names {
+		position: absolute;
+		top: 15px;
+		left: 70px;
+	}
+	.post-card-profile-names b {
+		font-size: 18px;
+		color: #333333;
+		font-weight: 700;
+	}
+	.date-span {
+		font-weight: 500;
+		font-size: 18px;
+		color: var(--gray-color);
+	}
+	.post-card-profile-names p {
+		font-size: 14px;
+		color: #555555;
+		font-weight: 500;
+		margin-top: -2px;
+	}
+	.post-card-profile-pic {
+		max-width: 35px;
+		border-radius: 50%;
+		position: relative;
+	}
+	.post-card-profile-pic img {
+		width: 35px;
+		height: 35px;
+		object-fit: cover;
+		object-position: 50% 50%;
+		border-radius: 50%;
+	}
+	.date-span {
+		font-size: 1rem;
+		font-weight: 400;
+		color: var(--gray-color);
+		cursor: default;
+	}
 }

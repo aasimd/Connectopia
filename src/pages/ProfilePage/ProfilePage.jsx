@@ -8,6 +8,7 @@ import { fetchUsersList } from "../../FetchFunctions/fetchFunctions";
 import { NavBar } from "../../Components/NavBar/NavBar";
 import { SuggestedUsersCard } from "../../Components/FollowUsersCards/SuggestedUsersCard/SuggestedUsersCard";
 import { ProgressBar } from "react-loader-spinner";
+import { NavBarSmallDisplays } from "../../Components/NavBarSmallDisplays/NavBarSmallDisplays";
 
 export const ProfilePage = () => {
 	const { state, dispatch, FollowingUsersPost } = useContext(PageContext);
@@ -43,11 +44,15 @@ export const ProfilePage = () => {
 				<nav className="left-column">
 					<NavBar />
 				</nav>
+
 				<div className="middle-column">
 					<div className="posts-container">
 						<ProfileCard userProfile={state.userInfo} />
 					</div>
-				</div>
+					
+				</div><footer className="nav-for-small-displays">
+						<NavBarSmallDisplays />
+					</footer>
 				<div>
 					<SuggestedUsersCard className="right-column" />
 				</div>

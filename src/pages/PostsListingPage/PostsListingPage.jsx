@@ -17,14 +17,15 @@ import "./PostsListingPage.css";
 import "../../App.css";
 import { SortButtonsCard } from "../../Components/SortButtonsCard/SortButtonsCard";
 import { ProgressBar } from "react-loader-spinner";
+import { NavBarSmallDisplays } from "../../Components/NavBarSmallDisplays/NavBarSmallDisplays";
 export const PostsListingPage = () => {
 	const {
 		state,
 		dispatch,
 		DisplayData,
-		FollowingUsersPost,
-		suggestedUsers,
-		followingUsers
+		FollowingUsersPost
+		// suggestedUsers,
+		// followingUsers
 	} = useContext(PageContext);
 	useEffect(() => {
 		dispatch({ type: "changeIsLoading", payload: true });
@@ -62,6 +63,7 @@ export const PostsListingPage = () => {
 					<nav className="left-column">
 						<NavBar />
 					</nav>
+
 					<div className="middle-column">
 						<div className="posts-container">
 							<h1 className="page-heading-name ">Home</h1>
@@ -73,7 +75,7 @@ export const PostsListingPage = () => {
 							</div>
 							<div>
 								{FollowingUsersPost().length > 0 ? (
-									<ul>
+									<ul style={{ paddingBottom: "4rem" }}>
 										{[...FollowingUsersPost()].map((post) => (
 											<PostsCard
 												key={post.id}
@@ -91,6 +93,9 @@ export const PostsListingPage = () => {
 							</div>
 						</div>
 					</div>
+					<footer className="nav-for-small-displays">
+						<NavBarSmallDisplays />
+					</footer>
 					<div>
 						<SuggestedUsersCard className="right-column" />
 					</div>

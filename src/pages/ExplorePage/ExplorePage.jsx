@@ -13,6 +13,7 @@ import { PostsCard } from "../../Components/PostsCard/PostsCard";
 import { NavBar } from "../../Components/NavBar/NavBar";
 import { SuggestedUsersCard } from "../../Components/FollowUsersCards/SuggestedUsersCard/SuggestedUsersCard";
 import { ProgressBar } from "react-loader-spinner";
+import { NavBarSmallDisplays } from "../../Components/NavBarSmallDisplays/NavBarSmallDisplays";
 
 export const ExplorePage = () => {
 	const { state, dispatch, DisplayData } = useContext(PageContext);
@@ -55,7 +56,7 @@ export const ExplorePage = () => {
 					<h1 className="page-heading-name ">Explore</h1>
 					<div className="posts-container">
 						{state?.postsData?.length > 0 ? (
-							<ul>
+							<ul style={{ paddingBottom: "4rem" }}>
 								{state?.postsData
 									?.map((post) => (
 										<PostsCard
@@ -73,6 +74,9 @@ export const ExplorePage = () => {
 						)}
 					</div>
 				</div>
+				<footer className="nav-for-small-displays">
+					<NavBarSmallDisplays />
+				</footer>
 				<div>
 					<SuggestedUsersCard className="right-column" />
 				</div>

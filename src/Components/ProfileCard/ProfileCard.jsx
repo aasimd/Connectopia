@@ -39,7 +39,9 @@ export const ProfileCard = ({ userProfile }) => {
 	}, [state.postsData]);
 	return (
 		<div
-			className={showFollowersCard || showFollowingCard ? "profile-card-blur" : ""}
+			className={
+				showFollowersCard || showFollowingCard ? "profile-card-blur" : ""
+			}
 		>
 			{showFollowersCard && (
 				<div className="followers-card">
@@ -150,7 +152,7 @@ export const ProfileCard = ({ userProfile }) => {
 						<ul>
 							{state.postsData.filter((post) => post.username === username)
 								.length > 0 ? (
-								<ul>
+								<ul style={{ paddingBottom: "4rem" }}>
 									{state.postsData
 										.filter((post) => post.username === username)
 										.map((post) => (

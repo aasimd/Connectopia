@@ -9,6 +9,7 @@ import "./BookmarksPage.css";
 import { NavBar } from "../../Components/NavBar/NavBar";
 import { SuggestedUsersCard } from "../../Components/FollowUsersCards/SuggestedUsersCard/SuggestedUsersCard";
 import { ProgressBar } from "react-loader-spinner";
+import { NavBarSmallDisplays } from "../../Components/NavBarSmallDisplays/NavBarSmallDisplays";
 export const BookmarksPage = () => {
 	const { state, dispatch } = useContext(PageContext);
 	useEffect(() => {
@@ -50,11 +51,12 @@ export const BookmarksPage = () => {
 				<nav className="left-column">
 					<NavBar />
 				</nav>
+				
 				<div className="middle-column">
 					<h1 className="page-heading-name">Bookmarks</h1>
 					<div className="posts-container bookmarks-page">
 						{state.bookmarkedPosts.length > 0 ? (
-							<ul>
+							<ul style={{ paddingBottom: "4rem" }}>
 								{[...state.postsData]
 									.filter((post) => state.bookmarkedPosts.includes(post._id))
 									.map((post) => (
@@ -70,6 +72,9 @@ export const BookmarksPage = () => {
 						)}
 					</div>
 				</div>
+				<footer className="nav-for-small-displays">
+					<NavBarSmallDisplays />
+				</footer>
 				<div>
 					<SuggestedUsersCard className="right-column" />
 				</div>
