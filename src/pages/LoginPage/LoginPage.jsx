@@ -12,9 +12,9 @@ export const LoginPage = () => {
 	const { state, dispatch } = useContext(PageContext);
 	useEffect(() => {
 		dispatch({ type: "changeIsLoading", payload: true });
-		setTimeout(()=>{
+		setTimeout(() => {
 			dispatch({ type: "changeIsLoading", payload: false });
-		},1000)
+		}, 1000);
 	}, []);
 	return (
 		<div>
@@ -25,14 +25,14 @@ export const LoginPage = () => {
 					}
 				>
 					<ProgressBar
-					height="100px"
-					width="400px"
-					ariaLabel="progress-bar-loading"
-					wrapperStyle={{}}
-					wrapperClass="progress-bar-wrapper"
-					borderColor="#F4442E"
-					barColor="#51E5FF"
-				/>
+						height="100px"
+						width="400px"
+						ariaLabel="progress-bar-loading"
+						wrapperStyle={{}}
+						wrapperClass="progress-bar-wrapper"
+						borderColor="#F4442E"
+						barColor="#51E5FF"
+					/>
 				</div>
 			)}
 			<div className="login-page">
@@ -53,10 +53,11 @@ export const LoginPage = () => {
 							<span>Share</span> What you thinking
 						</p>
 					</section>
-					<div className="landing-page-join-now">Join now</div>
+
 					<div className="landing-page-logo-container">
 						<img src={logo} alt="langing-page-logo" />
 					</div>
+					<div className="landing-page-join-now">Join now</div>
 				</div>
 				<div className="login-signup-card">
 					<section>

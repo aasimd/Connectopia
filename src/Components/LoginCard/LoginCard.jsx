@@ -78,7 +78,7 @@ export const LoginCard = ({ setPageState }) => {
 						<i className="fa-solid fa-xmark"></i> Wrong username or password entered
 					</b>
 				)}
-				<div>
+				<div className="login-submit-button">
 					<input type="submit" value="Submit" />
 				</div>
 			</form>

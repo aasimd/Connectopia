@@ -136,7 +136,7 @@ export const SignupCard = ({ setPageState }) => {
 						</b>
 					)}
 				</div>
-				<div>
+				<div className="signup-submit-button">
 					<input type="submit" value="Submit" />
 				</div>
 			</form>
